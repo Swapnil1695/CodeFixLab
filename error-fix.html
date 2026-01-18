@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS & JavaScript Error Fix Solutions - CodeFixLab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background-color: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #10b981;
+        }
+        
+        nav a.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #10b981;
+            border-radius: 2px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #475569;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        /* Error Content */
+        .page-content {
+            padding: 60px 0;
+        }
+        
+        .error-list {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .error-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .error-card h3 {
+            font-size: 1.6rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .problem {
+            background-color: #fef2f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc2626;
+        }
+        
+        .problem h4 {
+            color: #dc2626;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .reasons {
+            margin-bottom: 25px;
+        }
+        
+        .reasons h4 {
+            margin-bottom: 10px;
+            color: #475569;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #475569;
+        }
+        
+        .code-block {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+        
+        .tip {
+            background-color: #fef3c7;
+            padding: 18px;
+            border-radius: 8px;
+            border-left: 4px solid #d97706;
+            margin-top: 25px;
+        }
+        
+        .tip h4 {
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+        
+        /* Advertisement */
+        .ad-box {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #64748b;
+            margin: 40px 0;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #10b981;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                margin-bottom: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .error-card {
+                padding: 25px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CodeFixLab</h1>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                </div>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="error-fix.html" class="active">Error Fix</a></li>
+                    <li><a href="source-code.html">Source Code</a></li>
+                    <li><a href="mini-projects.html">Mini Projects</a></li>
+                    <li><a href="code-tester.html">Code Tester</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>HTML, CSS & JavaScript Error Fix Solutions</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container page-content">
+        <div class="error-list">
+            <!-- Error 1 -->
+            <div class="error-card">
+                <h3>HTML Image Not Showing – Solution</h3>
+                
+                <div class="problem">
+                    <h4>Problem:</h4>
+                    <p>Image does not appear on the webpage.</p>
+                </div>
+                
+                <div class="reasons">
+                    <h4>Common Reasons:</h4>
+                    <ul>
+                        <li>Wrong image path</li>
+                        <li>Image file missing</li>
+                        <li>Wrong file extension</li>
+                        <li>Case sensitivity issues in file names</li>
+                        <li>Image file is corrupted</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+                    &lt;!-- Correct Code Example --&gt;<br>
+                    &lt;img src="images/photo.jpg" alt="Sample Image" width="400" height="300"&gt;<br><br>
+                    
+                    &lt;!-- For absolute paths --&gt;<br>
+                    &lt;img src="https://example.com/images/photo.jpg" alt="Sample Image"&gt;<br><br>
+                    
+                    &lt;!-- With proper folder structure --&gt;<br>
+                    &lt;img src="../assets/images/photo.jpg" alt="Sample Image"&gt;
+                </div>
+                
+                <div class="tip">
+                    <h4>Tip:</h4>
+                    <p>Always check folder name and image extension. Use relative paths for local files and absolute URLs for external images. Check the browser console (F12) for 404 errors indicating missing files.</p>
+                </div>
+            </div>
+        
+            <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+          
+            <!-- Error 2 -->
+            <div class="error-card">
+                <h3>CSS Not Working – Solution</h3>
+                
+                <div class="problem">
+                    <h4>Problem:</h4>
+                    <p>CSS file not applying styles to HTML elements.</p>
+                </div>
+                
+                <div class="reasons">
+                    <h4>Reasons:</h4>
+                    <ul>
+                        <li>CSS file not linked properly in HTML</li>
+                        <li>Incorrect file path</li>
+                        <li>CSS syntax errors</li>
+                        <li>CSS specificity issues</li>
+                        <li>Browser caching old CSS</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+                    &lt;!DOCTYPE html&gt;<br>
+                    &lt;html lang="en"&gt;<br>
+                    &lt;head&gt;<br>
+                    &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                    &nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                    &nbsp;&nbsp;&lt;title&gt;My Page&lt;/title&gt;<br>
+                    &nbsp;&nbsp;&lt;!-- Correct CSS Link --&gt;<br>
+                    &nbsp;&nbsp;&lt;link rel="stylesheet" href="css/style.css"&gt;<br>
+                    &lt;/head&gt;<br>
+                    &lt;body&gt;<br>
+                    &nbsp;&nbsp;&lt;!-- Your content here --&gt;<br>
+                    &lt;/body&gt;<br>
+                    &lt;/html&gt;
+                </div>
+                
+                <div class="tip">
+                    <h4>Tip:</h4>
+                    <p>Place CSS link in the &lt;head&gt; section of your HTML. Check file path and ensure the CSS file exists. Use browser developer tools (F12) to inspect if CSS is loading and check for syntax errors. Try clearing browser cache with Ctrl+F5.</p>
+                </div>
+            </div>
+            
+            <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+            <!-- Error 3 -->
+            <div class="error-card">
+                <h3>JavaScript Not Working – Solution</h3>
+                
+                <div class="problem">
+                    <h4>Problem:</h4>
+                    <p>JavaScript code not running or executing.</p>
+                </div>
+                
+                <div class="reasons">
+                    <h4>Common Fixes:</h4>
+                    <ul>
+                        <li>JS file placed in wrong location</li>
+                        <li>JavaScript syntax errors</li>
+                        <li>Trying to access DOM elements before they load</li>
+                        <li>Browser console errors</li>
+                        <li>JavaScript disabled in browser</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+                    &lt;!DOCTYPE html&gt;<br>
+                    &lt;html lang="en"&gt;<br>
+                    &lt;head&gt;<br>
+                    &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                    &nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                    &nbsp;&nbsp;&lt;title&gt;My Page&lt;/title&gt;<br>
+                    &lt;/head&gt;<br>
+                    &lt;body&gt;<br>
+                    &nbsp;&nbsp;&lt;h1 id="title"&gt;Hello World&lt;/h1&gt;<br>
+                    &nbsp;&nbsp;&lt;button id="myButton"&gt;Click Me&lt;/button&gt;<br><br>
+                    &nbsp;&nbsp;&lt;!-- Correct Placement: Before closing body tag --&gt;<br>
+                    &nbsp;&nbsp;&lt;script src="js/main.js"&gt;&lt;/script&gt;<br>
+                    &lt;/body&gt;<br>
+                    &lt;/html&gt;<br><br>
+                    &lt;!-- Alternative: Using defer attribute --&gt;<br>
+                    &lt;script src="js/main.js" defer&gt;&lt;/script&gt;
+                </div>
+                
+                <div class="tip">
+                    <h4>Tip:</h4>
+                    <p>Always check browser console (F12) for JavaScript errors. Make sure your script tags are correctly placed or use the 'defer' attribute. Use 'DOMContentLoaded' event to ensure DOM is ready before executing JavaScript that manipulates elements.</p>
+                </div>
+            </div>
+            
+            <!-- Error 4 -->
+            <div class="error-card">
+                <h3>Form Not Submitting Data</h3>
+                
+                <div class="problem">
+                    <h4>Problem:</h4>
+                    <p>HTML form not sending data to server.</p>
+                </div>
+                
+                <div class="reasons">
+                    <h4>Reasons:</h4>
+                    <ul>
+                        <li>Missing form action attribute</li>
+                        <li>Missing method attribute</li>
+                        <li>Input fields without name attributes</li>
+                        <li>JavaScript preventing default form submission</li>
+                        <li>Submit button not inside form tags</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+                    &lt;!-- Correct Form Example --&gt;<br>
+                    &lt;form action="/submit-form" method="POST"&gt;<br>
+                    &nbsp;&nbsp;&lt;label for="username"&gt;Username:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&lt;input type="text" id="username" name="username" required&gt;<br><br>
+                    &nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&lt;input type="email" id="email" name="email" required&gt;<br><br>
+                    &nbsp;&nbsp;&lt;button type="submit"&gt;Submit Form&lt;/button&gt;<br>
+                    &lt;/form&gt;
+                </div>
+                
+                <div class="tip">
+                    <h4>Tip:</h4>
+                    <p>Always include 'action' and 'method' attributes in forms. Each input field should have a 'name' attribute for data to be sent. Use 'required' attribute for validation. Test with a simple form first before adding JavaScript validation.</p>
+                </div>
+            </div>
+
+            <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+      
+            <!-- Error 5 -->
+            <div class="error-card">
+                <h3>Responsive Design Not Working</h3>
+                
+                <div class="problem">
+                    <h4>Problem:</h4>
+                    <p>Website not adapting to different screen sizes.</p>
+                </div>
+                
+                <div class="reasons">
+                    <h4>Reasons:</h4>
+                    <ul>
+                        <li>Missing viewport meta tag</li>
+                        <li>Using fixed pixel values instead of percentages or relative units</li>
+                        <li>Not using media queries</li>
+                        <li>Missing responsive images</li>
+                        <li>CSS Flexbox/Grid not implemented correctly</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+                    &lt;!-- Essential viewport meta tag --&gt;<br>
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br><br>
+                    
+                    &lt;!-- CSS Example with Media Queries --&gt;<br>
+                    &lt;style&gt;<br>
+                    &nbsp;&nbsp;.container {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;max-width: 1200px;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;margin: 0 auto;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;padding: 0 15px;<br>
+                    &nbsp;&nbsp;}<br><br>
+                    
+                    &nbsp;&nbsp;/* Media Query for Tablets */<br>
+                    &nbsp;&nbsp;@media (max-width: 768px) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;.container {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding: 0 10px;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;h1 {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 24px;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;}<br><br>
+                    
+                    &nbsp;&nbsp;/* Media Query for Mobile */<br>
+                    &nbsp;&nbsp;@media (max-width: 480px) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;h1 {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 20px;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;}<br>
+                    &lt;/style&gt;
+                </div>
+                
+                <div class="tip">
+                    <h4>Tip:</h4>
+                    <p>Always include the viewport meta tag. Use relative units (%, rem, em, vw, vh) instead of fixed pixels. Test your website on different screen sizes using browser developer tools (F12 > Toggle Device Toolbar).</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeFixLab</h3>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                    <p>A beginner-friendly platform for students to learn web development through practical examples and error solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeFixLab. All rights reserved. Designed for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+        
+        // Syntax highlighting for code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            const code = block.textContent;
+            // Simple syntax highlighting for HTML
+            let highlighted = code
+                .replace(/&lt;/g, '<span style="color: #f87171;">&lt;</span>')
+                .replace(/&gt;/g, '<span style="color: #f87171;">&gt;</span>')
+                .replace(/&nbsp;/g, '<span style="color: #94a3b8;">&nbsp;</span>')
+                .replace(/&lt;!--/g, '<span style="color: #64748b;">&lt;!--</span>')
+                .replace(/--&gt;/g, '<span style="color: #64748b;">--&gt;</span>')
+                .replace(/(&lt;\/?[a-zA-Z][^&gt;]*&gt;)/g, '<span style="color: #7dd3fc;">$1</span>');
+            
+            block.innerHTML = highlighted;
+        });
+    </script>
+</body>
+</html>

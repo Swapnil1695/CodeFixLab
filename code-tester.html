@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online HTML CSS JavaScript Code Tester - CodeFixLab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background-color: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #10b981;
+        }
+        
+        nav a.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #10b981;
+            border-radius: 2px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #475569;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        .page-header p {
+            text-align: center;
+            color: #475569;
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Code Tester */
+        .code-tester {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .code-editor, .code-output {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .editor-header, .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .editor-header h3, .output-header h3 {
+            font-size: 1.4rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .editor-area {
+            width: 100%;
+            min-height: 350px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            resize: vertical;
+            background-color: #f8fafc;
+            line-height: 1.5;
+            tab-size: 4;
+        }
+        
+        .editor-area:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .output-area {
+            width: 100%;
+            min-height: 350px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: white;
+            overflow-y: auto;
+        }
+        
+        .editor-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            color: #64748b;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: #10b981;
+            border-bottom-color: #10b981;
+            background-color: #f0fdf9;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0da271;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #10b981;
+            border: 2px solid #10b981;
+            margin-left: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f0fdf9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
+        /* Tutorial Section */
+        .tutorial {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .tutorial h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .tutorial-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 25px;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            border-top: 4px solid #10b981;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #10b981;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step h4 {
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .step p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Example Projects */
+        .examples {
+            margin-bottom: 60px;
+        }
+        
+        .examples h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .example-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        /* Advertisement */
+        .ad-box {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #64748b;
+            margin: 40px 0;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #10b981;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .code-tester {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                margin-bottom: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .code-editor, .code-output, .tutorial {
+                padding: 25px 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .editor-tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                text-align: center;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+            
+            .tab.active {
+                border-left-color: #10b981;
+                border-bottom-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CodeFixLab</h1>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                </div>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="error-fix.html">Error Fix</a></li>
+                    <li><a href="source-code.html">Source Code</a></li>
+                    <li><a href="mini-projects.html">Mini Projects</a></li>
+                    <li><a href="code-tester.html" class="active">Code Tester</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Online HTML CSS JavaScript Code Tester</h1>
+            <p>Write HTML, CSS, and JavaScript code and see the output instantly. This tool helps beginners test code without installing anything.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container page-content">
+        <!-- Code Tester Interface -->
+        <div class="code-tester">
+            <!-- Code Editor Section -->
+            <div class="code-editor">
+                <div class="editor-header">
+                    <h3><i class="fas fa-code"></i> Code Editor</h3>
+                    <div>
+                        <button class="btn btn-primary btn-small" id="runCode">
+                            <i class="fas fa-play"></i> Run Code
+                        </button>
+                        <button class="btn btn-secondary btn-small" id="clearCode">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="editor-tabs">
+                    <div class="tab active" data-tab="html">HTML</div>
+                    <div class="tab" data-tab="css">CSS</div>
+                    <div class="tab" data-tab="js">JavaScript</div>
+                </div>
+                
+                <div class="tab-content active" id="html-tab">
+                    <textarea id="htmlEditor" class="editor-area" placeholder="Enter your HTML code here...">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Test Page</title>
+</head>
+<body>
+    <h1>Welcome to CodeFixLab Code Tester</h1>
+    <p>This is a paragraph. Edit this code and click "Run Code" to see changes.</p>
+    
+    <div class="demo-box">
+        <h2>Interactive Demo</h2>
+        <p>Try changing the button text or color in the CSS tab.</p>
+        <button id="demoBtn">Click Me!</button>
+        <div id="output"></div>
+    </div>
+    
+    <div class="features">
+        <h3>Features of this Code Tester:</h3>
+        <ul>
+            <li>Real-time HTML/CSS/JS testing</li>
+            <li>No installation required</li>
+            <li>Beginner-friendly interface</li>
+            <li>Save and load your code</li>
+        </ul>
+    </div>
+</body>
+</html></textarea>
+                </div>
+                
+                <div class="tab-content" id="css-tab">
+                    <textarea id="cssEditor" class="editor-area" placeholder="Enter your CSS code here...">
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #10b981;
+    border-bottom: 2px solid #10b981;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #3b82f6;
+    margin-top: 25px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.demo-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    border-left: 4px solid #10b981;
+}
+
+button {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #0da271;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+#output {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0fdf9;
+    border-radius: 6px;
+    border: 1px solid #a7f3d0;
+}
+
+.features {
+    background-color: #eff6ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.features h3 {
+    color: #1d4ed8;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: #475569;
+}</textarea>
+                </div>
+                
+                <div class="tab-content" id="js-tab">
+                    <textarea id="jsEditor" class="editor-area" placeholder="Enter your JavaScript code here...">
+// JavaScript code for interactive demo
+document.getElementById('demoBtn').addEventListener('click', function() {
+    const outputDiv = document.getElementById('output');
+    const now = new Date();
+    
+    outputDiv.innerHTML = `
+        <h3>Button Clicked!</h3>
+        <p><strong>Current Date & Time:</strong> ${now.toLocaleString()}</p>
+        <p><strong>Timestamp:</strong> ${now.getTime()}</p>
+        <p>This message was generated by JavaScript. Try changing this code in the JS tab!</p>
+    `;
+    
+    // Change button text temporarily
+    const btn = document.getElementById('demoBtn');
+    const originalText = btn.textContent;
+    btn.textContent = 'Clicked!';
+    btn.style.backgroundColor = '#3b82f6';
+    
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.backgroundColor = '#10b981';
+    }, 1500);
+});
+
+// Additional demo function
+function showAlert() {
+    alert('Hello from the Code Tester! This is a JavaScript alert.');
+}
+
+// Add click counter
+let clickCount = 0;
+const demoBtn = document.getElementById('demoBtn');
+demoBtn.addEventListener('click', function() {
+    clickCount++;
+    console.log(`Button clicked ${clickCount} times`);
+});</textarea>
+                </div>
+                
+                <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn btn-secondary btn-small" id="saveCode">
+                        <i class="fas fa-save"></i> Save Code
+                    </button>
+                    <button class="btn btn-secondary btn-small" id="loadCode">
+                        <i class="fas fa-folder-open"></i> Load Example
+                    </button>
+                    <button class="btn btn-secondary btn-small" id="resetCode">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Output Section -->
+            <div class="code-output">
+                <div class="output-header">
+                    <h3><i class="fas fa-play-circle"></i> Live Output</h3>
+                    <button class="btn btn-secondary btn-small" id="clearOutput">
+                        <i class="fas fa-trash"></i> Clear Output
+                    </button>
+                </div>
+                
+                <div id="outputFrame" class="output-area">
+                    <div style="color: #64748b; text-align: center; padding: 40px;">
+                        <i class="fas fa-code" style="font-size: 48px; margin-bottom: 20px;"></i>
+                        <h3>Output Will Appear Here</h3>
+                        <p>Write your code in the editor and click "Run Code" to see the output.</p>
+                        <p>You can edit HTML, CSS, and JavaScript in the respective tabs.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background-color: #f8fafc; border-radius: 8px;">
+                    <h4 style="color: #475569; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-lightbulb"></i> Tip:
+                    </h4>
+                    <p style="color: #64748b; font-size: 0.95rem;">
+                        The output shows the rendered HTML with applied CSS and JavaScript. Open browser console (F12) to see JavaScript logs and errors.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+        
+        <!-- Tutorial Section -->
+        <div class="tutorial">
+            <h2>How to Use the Code Tester</h2>
+            <p style="text-align: center; color: #64748b; max-width: 800px; margin: 0 auto;">
+                Follow these simple steps to test your HTML, CSS, and JavaScript code. No installation or setup required!
+            </p>
+            
+            <div class="tutorial-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Write HTML Code</h4>
+                    <p>Start with the HTML tab to create the structure of your webpage. Add headings, paragraphs, images, buttons, and other HTML elements.</p>
+                </div>
+        
+        <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Style with CSS</h4>
+                    <p>Switch to the CSS tab to style your HTML. Change colors, fonts, layouts, and add animations to make your page visually appealing.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Add JavaScript</h4>
+                    <p>Use the JavaScript tab to add interactivity. Handle button clicks, validate forms, manipulate DOM elements, and create dynamic content.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Run & Test</h4>
+                    <p>Click the "Run Code" button to see your code in action. The output updates instantly so you can test and debug your code in real-time.</p>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+        <!-- Example Projects -->
+        <div class="examples">
+            <h2>Try These Example Projects</h2>
+            <p style="text-align: center; color: #64748b; margin-bottom: 30px; max-width: 800px; margin: 0 auto 30px;">
+                Click any example below to load ready-to-use code and start experimenting.
+            </p>
+            
+            <div class="example-buttons">
+                <button class="btn btn-secondary" data-example="calculator">
+                    <i class="fas fa-calculator"></i> Calculator
+                </button>
+                <button class="btn btn-secondary" data-example="todolist">
+                    <i class="fas fa-tasks"></i> To-Do List
+                </button>
+                <button class="btn btn-secondary" data-example="quiz">
+                    <i class="fas fa-question-circle"></i> Quiz App
+                </button>
+                <button class="btn btn-secondary" data-example="weather">
+                    <i class="fas fa-cloud-sun"></i> Weather Widget
+                </button>
+                <button class="btn btn-secondary" data-example="counter">
+                    <i class="fas fa-plus-circle"></i> Counter App
+                </button>
+                <button class="btn btn-secondary" data-example="form">
+                    <i class="fas fa-edit"></i> Contact Form
+                </button>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-primary" id="loadRandomExample">
+                    <i class="fas fa-random"></i> Load Random Example
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeFixLab</h3>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                    <p>A beginner-friendly platform for students to learn web development through practical examples and error solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeFixLab. All rights reserved. Designed for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+        
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update active tab
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // Run Code functionality
+        document.getElementById('runCode').addEventListener('click', function() {
+            const htmlCode = document.getElementById('htmlEditor').value;
+            const cssCode = document.getElementById('cssEditor').value;
+            const jsCode = document.getElementById('jsEditor').value;
+            
+            // Extract body content from HTML
+            const bodyMatch = htmlCode.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+            let bodyContent = bodyMatch ? bodyMatch[1] : htmlCode;
+            
+            // If no body tags, use the entire HTML
+            if (!bodyMatch && htmlCode.includes('<html>')) {
+                // Extract content between html tags
+                const htmlMatch = htmlCode.match(/<html[^>]*>([\s\S]*)<\/html>/i);
+                bodyContent = htmlMatch ? htmlMatch[1] : htmlCode;
+            }
+            
+            // Create full HTML document with CSS and JS
+            const fullHTML = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <style>${cssCode}</style>
+                </head>
+                <body>
+                    ${bodyContent}
+                    <script>
+                        // Wrap JS code in try-catch to handle errors gracefully
+                        try {
+                            ${jsCode}
+                        } catch(error) {
+                            console.error('JavaScript Error:', error);
+                            document.body.innerHTML += '<div style="background: #fee; color: #c00; padding: 10px; margin: 10px; border: 1px solid #c00;">JavaScript Error: ' + error.message + '</div>';
+                        }
+                    <\/script>
+                </body>
+                </html>
+            `;
+            
+            // Display in output frame
+            const outputFrame = document.getElementById('outputFrame');
+            outputFrame.innerHTML = '';
+            
+            // Use iframe for better isolation
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '500px';
+            iframe.style.border = 'none';
+            iframe.style.borderRadius = '8px';
+            iframe.style.backgroundColor = 'white';
+            outputFrame.appendChild(iframe);
+            
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            iframeDoc.open();
+            iframeDoc.write(fullHTML);
+            iframeDoc.close();
+            
+            // Show success message
+            setTimeout(() => {
+                const successMsg = document.createElement('div');
+                successMsg.innerHTML = `
+                    <div style="background: #f0fdf9; color: #065f46; padding: 10px; margin-top: 10px; border-radius: 6px; border: 1px solid #a7f3d0; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-check-circle"></i> Code executed successfully! Output updated.
+                    </div>
+                `;
+                outputFrame.appendChild(successMsg);
+            }, 100);
+        });
+        
+        // Clear Code
+        document.getElementById('clearCode').addEventListener('click', function() {
+            if (confirm('Clear all code in all tabs?')) {
+                document.getElementById('htmlEditor').value = '';
+                document.getElementById('cssEditor').value = '';
+                document.getElementById('jsEditor').value = '';
+            }
+        });
+        
+        // Clear Output
+        document.getElementById('clearOutput').addEventListener('click', function() {
+            document.getElementById('outputFrame').innerHTML = `
+                <div style="color: #64748b; text-align: center; padding: 40px;">
+                    <i class="fas fa-code" style="font-size: 48px; margin-bottom: 20px;"></i>
+                    <h3>Output Cleared</h3>
+                    <p>Click "Run Code" to see your output again.</p>
+                </div>
+            `;
+        });
+        
+        // Reset Code
+        document.getElementById('resetCode').addEventListener('click', function() {
+            if (confirm('Reset to default demo code?')) {
+                // Reset to initial demo code
+                document.getElementById('htmlEditor').value = `<!DOCTYPE html>
+<html>
+<head>
+    <title>My Test Page</title>
+</head>
+<body>
+    <h1>Welcome to CodeFixLab Code Tester</h1>
+    <p>This is a paragraph. Edit this code and click "Run Code" to see changes.</p>
+    
+    <div class="demo-box">
+        <h2>Interactive Demo</h2>
+        <p>Try changing the button text or color in the CSS tab.</p>
+        <button id="demoBtn">Click Me!</button>
+        <div id="output"></div>
+    </div>
+    
+    <div class="features">
+        <h3>Features of this Code Tester:</h3>
+        <ul>
+            <li>Real-time HTML/CSS/JS testing</li>
+            <li>No installation required</li>
+            <li>Beginner-friendly interface</li>
+            <li>Save and load your code</li>
+        </ul>
+    </div>
+</body>
+</html>`;
+                
+                document.getElementById('cssEditor').value = `body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #10b981;
+    border-bottom: 2px solid #10b981;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #3b82f6;
+    margin-top: 25px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.demo-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    border-left: 4px solid #10b981;
+}
+
+button {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #0da271;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+#output {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0fdf9;
+    border-radius: 6px;
+    border: 1px solid #a7f3d0;
+}
+
+.features {
+    background-color: #eff6ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.features h3 {
+    color: #1d4ed8;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: #475569;
+}`;
+                
+                document.getElementById('jsEditor').value = `// JavaScript code for interactive demo
+document.getElementById('demoBtn').addEventListener('click', function() {
+    const outputDiv = document.getElementById('output');
+    const now = new Date();
+    
+    outputDiv.innerHTML = \`
+        <h3>Button Clicked!</h3>
+        <p><strong>Current Date & Time:</strong> \${now.toLocaleString()}</p>
+        <p><strong>Timestamp:</strong> \${now.getTime()}</p>
+        <p>This message was generated by JavaScript. Try changing this code in the JS tab!</p>
+    \`;
+    
+    // Change button text temporarily
+    const btn = document.getElementById('demoBtn');
+    const originalText = btn.textContent;
+    btn.textContent = 'Clicked!';
+    btn.style.backgroundColor = '#3b82f6';
+    
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.backgroundColor = '#10b981';
+    }, 1500);
+});
+
+// Additional demo function
+function showAlert() {
+    alert('Hello from the Code Tester! This is a JavaScript alert.');
+}
+
+// Add click counter
+let clickCount = 0;
+const demoBtn = document.getElementById('demoBtn');
+demoBtn.addEventListener('click', function() {
+    clickCount++;
+    console.log(\`Button clicked \${clickCount} times\`);
+});`;
+            }
+        });
+        
+        // Save Code
+        document.getElementById('saveCode').addEventListener('click', function() {
+            const htmlCode = document.getElementById('htmlEditor').value;
+            const cssCode = document.getElementById('cssEditor').value;
+            const jsCode = document.getElementById('jsEditor').value;
+            
+            const codeData = {
+                html: htmlCode,
+                css: cssCode,
+                js: jsCode,
+                timestamp: new Date().toISOString()
+            };
+            
+            // In a real implementation, this would save to server or localStorage
+            // For demo, we'll just show an alert
+            alert('Code saved! In a real implementation, this would save your code to your account or localStorage.');
+            
+            // For demo purposes, store in localStorage
+            try {
+                localStorage.setItem('codefixlab_saved_code', JSON.stringify(codeData));
+            } catch(e) {
+                console.log('Could not save to localStorage:', e);
+            }
+        });
+        
+        // Load Example
+        document.getElementById('loadCode').addEventListener('click', function() {
+            const examples = {
+                calculator: {
+                    name: 'Calculator',
+                    html: `<div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+        <button class="btn-clear" onclick="clearDisplay()">C</button>
+        <button class="btn-operator" onclick="appendToDisplay('/')">/</button>
+        <button class="btn-operator" onclick="appendToDisplay('*')">×</button>
+        <button class="btn-operator" onclick="appendToDisplay('-')">-</button>
+        
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button class="btn-operator" onclick="appendToDisplay('+')" style="grid-row: span 2;">+</button>
+        
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button class="btn-equals" onclick="calculate()" style="grid-row: span 2;">=</button>
+        
+        <button onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+    </div>
+</div>`,
+                    css: `.calculator {
+    width: 300px;
+    margin: 0 auto;
+    background: #1e293b;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.display {
+    background: #0f172a;
+    color: white;
+    font-size: 2.5rem;
+    padding: 20px;
+    text-align: right;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    min-height: 80px;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #334155;
+    color: white;
+    transition: background 0.2s;
+}
+
+.buttons button:hover {
+    background: #475569;
+}
+
+.btn-operator {
+    background: #f59e0b !important;
+}
+
+.btn-operator:hover {
+    background: #d97706 !important;
+}
+
+.btn-clear {
+    background: #dc2626 !important;
+}
+
+.btn-clear:hover {
+    background: #b91c1c !important;
+}
+
+.btn-equals {
+    background: #10b981 !important;
+}
+
+.btn-equals:hover {
+    background: #0da271 !important;
+}`,
+                    js: `let currentDisplay = '0';
+let previousValue = null;
+let operator = null;
+let waitingForNewValue = false;
+
+function updateDisplay() {
+    document.getElementById('display').textContent = currentDisplay;
+}
+
+function appendToDisplay(value) {
+    if (waitingForNewValue) {
+        currentDisplay = value;
+        waitingForNewValue = false;
+    } else {
+        currentDisplay = currentDisplay === '0' ? value : currentDisplay + value;
+    }
+    updateDisplay();
+}
+
+function clearDisplay() {
+    currentDisplay = '0';
+    previousValue = null;
+    operator = null;
+    waitingForNewValue = false;
+    updateDisplay();
+}
+
+function calculate() {
+    if (previousValue === null || operator === null) return;
+    
+    const currentValue = parseFloat(currentDisplay);
+    let result;
+    
+    switch(operator) {
+        case '+':
+            result = previousValue + currentValue;
+            break;
+        case '-':
+            result = previousValue - currentValue;
+            break;
+        case '*':
+            result = previousValue * currentValue;
+            break;
+        case '/':
+            result = previousValue / currentValue;
+            break;
+        default:
+            return;
+    }
+    
+    currentDisplay = result.toString();
+    previousValue = null;
+    operator = null;
+    waitingForNewValue = true;
+    updateDisplay();
+}
+
+// Initialize
+updateDisplay();`
+                },
+                // More examples would be here in a full implementation
+            };
+            
+            // For demo, load calculator
+            const example = examples.calculator;
+            document.getElementById('htmlEditor').value = example.html;
+            document.getElementById('cssEditor').value = example.css;
+            document.getElementById('jsEditor').value = example.js;
+            
+            alert(`Loaded "${example.name}" example! Click "Run Code" to see it in action.`);
+        });
+        
+        // Example buttons
+        document.querySelectorAll('[data-example]').forEach(button => {
+            button.addEventListener('click', function() {
+                const exampleType = this.getAttribute('data-example');
+                alert(`Loading ${exampleType} example... In a full implementation, this would load the complete code for that project.`);
+            });
+        });
+        
+        // Random example
+        document.getElementById('loadRandomExample').addEventListener('click', function() {
+            const examples = ['Calculator', 'To-Do List', 'Quiz App', 'Weather Widget', 'Counter', 'Form Validation'];
+            const randomExample = examples[Math.floor(Math.random() * examples.length)];
+            alert(`Loading random example: ${randomExample}. In a full implementation, this would load the complete code for that project.`);
+        });
+        
+        // Load saved code from localStorage if available
+        window.addEventListener('load', function() {
+            try {
+                const savedCode = localStorage.getItem('codefixlab_saved_code');
+                if (savedCode) {
+                    const codeData = JSON.parse(savedCode);
+                    // Optionally load saved code automatically or provide a button
+                    // For now, we'll just note it's available
+                    console.log('Saved code found in localStorage');
+                }
+            } catch(e) {
+                console.log('No saved code found or error loading:', e);
+            }
+        });
+    </script>
+</body>
+</html>

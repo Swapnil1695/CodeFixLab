@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI coding assistance tools and resources. Learn how to use AI for coding help, debugging, and learning programming.">
+    <meta name="keywords" content="AI coding, ChatGPT, DeepSeek, AI programming help, coding AI tools, programming assistance">
+    <title>AI Tools - CodeFixLab | AI Coding Assistance & Programming Help</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+    <style>
+        .ai-tools-page .hero {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+        .ai-tools-page .hero-title {
+            color: #1565c0;
+        }
+        .ai-response-box {
+            background: #f5f7fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+            border: 1px solid #e0e0e0;
+        }
+        .ai-thinking {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 200px;
+            color: #666;
+        }
+        .ai-thinking i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4a6bff;
+        }
+        .dot-flashing {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #4a6bff;
+            color: #4a6bff;
+            animation: dotFlashing 1s infinite linear alternate;
+            animation-delay: .5s;
+        }
+        .dot-flashing::before, .dot-flashing::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        .dot-flashing::before {
+            left: -15px;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #4a6bff;
+            color: #4a6bff;
+            animation: dotFlashing 1s infinite alternate;
+            animation-delay: 0s;
+        }
+        .dot-flashing::after {
+            left: 15px;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #4a6bff;
+            color: #4a6bff;
+            animation: dotFlashing 1s infinite alternate;
+            animation-delay: 1s;
+        }
+        @keyframes dotFlashing {
+            0% { background-color: #4a6bff; }
+            50%, 100% { background-color: rgba(74, 107, 255, 0.2); }
+        }
+        .ai-tip-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #4a6bff;
+        }
+    </style>
+</head>
+<body class="ai-tools-page" id="aiToolsPage">
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i> CodeFixLab
+                </a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a href="error-fix.html" class="nav-link"><i class="fas fa-bug"></i> Error Fix</a></li>
+                    <li class="nav-item"><a href="source-code.html" class="nav-link"><i class="fas fa-file-code"></i> Source Code</a></li>
+                    <li class="nav-item"><a href="mini-projects.html" class="nav-link"><i class="fas fa-project-diagram"></i> Mini Projects</a></li>
+                    <li class="nav-item"><a href="code-tester.html" class="nav-link"><i class="fas fa-vial"></i> Code Tester</a></li>
+                    <li class="nav-item"><a href="ai-tools.html" class="nav-link active"><i class="fas fa-robot"></i> AI Tools</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Ad Space -->
+    <div class="container ad-container">
+        <div class="ad-box">Ad Space (728x90)</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">AI Coding Assistance Tools</h1>
+                <p class="hero-subtitle">Learn how to use AI for coding help, debugging, and accelerating your programming journey. Get the most out of AI tools for development.</p>
+                <div class="hero-buttons">
+                    <a href="#ai-chat" class="btn btn-primary">
+                        <i class="fas fa-comments"></i> Try AI Chat
+                    </a>
+                    <a href="#resources" class="btn btn-secondary">
+                        <i class="fas fa-external-link-alt"></i> AI Resources
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-robot"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chat Assistant -->
+    <section class="features" id="ai-chat">
+        <div class="container">
+            <h2 class="section-title">AI Coding Assistant (Demo)</h2>
+            <p class="section-subtitle">Ask coding questions and get AI-powered suggestions. This is a demo showing how AI can help with programming.</p>
+            
+            <div class="ai-tool-card">
+                <div class="ai-input-container">
+                    <label for="aiQuestion"><i class="fas fa-question-circle"></i> Ask a Coding Question</label>
+                    <textarea id="aiQuestion" placeholder="Example: How do I center a div in CSS? Or: What's wrong with this JavaScript code? Or: Explain closures in JavaScript..."></textarea>
+                </div>
+                
+                <div class="ai-buttons">
+                    <button id="askBtn" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Ask AI
+                    </button>
+                    <button id="clearQuestionBtn" class="btn btn-outline">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                    <button id="sampleBtn1" class="btn btn-outline">
+                        <i class="fas fa-code"></i> Sample: CSS Help
+                    </button>
+                    <button id="sampleBtn2" class="btn btn-outline">
+                        <i class="fas fa-bug"></i> Sample: Debug Help
+                    </button>
+                </div>
+                
+                <div id="aiResponse" class="ai-response-box">
+                    <div class="ai-thinking" id="aiThinking" style="display: none;">
+                        <i class="fas fa-robot"></i>
+                        <p>AI is thinking...</p>
+                        <div class="dot-flashing"></div>
+                    </div>
+                    <div id="aiResponseContent">
+                        <p style="color: #666; text-align: center; margin-top: 80px;">
+                            <i class="fas fa-robot fa-2x" style="margin-bottom: 15px; display: block; color: #4a6bff;"></i>
+                            Your AI response will appear here.<br>
+                            Try asking about HTML, CSS, JavaScript, or debugging.
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 15px; background: #e8f4fd; border-radius: 8px; font-size: 0.9rem;">
+                    <p><strong><i class="fas fa-info-circle"></i> Note:</strong> This is a demonstration of AI interaction. In a real application, this would connect to an AI API like OpenAI or Claude. The responses are simulated based on common programming questions.</p>
+                </div>
+            </div>
+            
+            <!-- AI Resources -->
+            <div class="ai-resources" id="resources" style="margin-top: 4rem;">
+                <h2 class="section-title">Popular AI Coding Tools</h2>
+                <p class="section-subtitle">These are actual AI tools you can use for coding assistance</p>
+                
+                <div class="ai-links">
+                    <div class="ai-link-card">
+                        <i class="fab fa-openai"></i>
+                        <h3>ChatGPT</h3>
+                        <p>OpenAI's powerful language model for coding help, explanation, and problem solving.</p>
+                        <a href="https://chat.openai.com" target="_blank" class="btn btn-primary" style="margin-top: 15px;">
+                            <i class="fas fa-external-link-alt"></i> Visit ChatGPT
+                        </a>
+                    </div>
+                    
+                    <div class="ai-link-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>GitHub Copilot</h3>
+                        <p>AI pair programmer that suggests code completions and entire functions.</p>
+                        <a href="https://github.com/features/copilot" target="_blank" class="btn btn-primary" style="margin-top: 15px;">
+                            <i class="fas fa-external-link-alt"></i> Visit Copilot
+                        </a>
+                    </div>
+                    
+                    <div class="ai-link-card">
+                        <i class="fas fa-search"></i>
+                        <h3>DeepSeek</h3>
+                        <p>AI assistant specialized in coding, math, and logical reasoning tasks.</p>
+                        <a href="https://www.deepseek.com" target="_blank" class="btn btn-primary" style="margin-top: 15px;">
+                            <i class="fas fa-external-link-alt"></i> Visit DeepSeek
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="container ad-container">
+        <div class="ad-box">Ad Space (728x90)</div>
+    </div>
+
+    <!-- How to Use AI for Coding -->
+    <section class="features" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">How to Use AI Effectively for Coding</h2>
+            
+            <div class="ai-tips" style="margin-top: 2rem;">
+                <div class="ai-tip-card">
+                    <h4><i class="fas fa-lightbulb"></i> Tip 1: Be Specific in Your Questions</h4>
+                    <p>Instead of "Why isn't my code working?", ask "Why is this JavaScript function returning undefined when I pass an array?" Include relevant code snippets and error messages.</p>
+                </div>
+                
+                <div class="ai-tip-card">
+                    <h4><i class="fas fa-code"></i> Tip 2: Ask for Explanations, Not Just Code</h4>
+                    <p>Request explanations of concepts along with code examples. Ask "Can you explain how CSS Flexbox works with examples?" rather than just "Give me Flexbox code."</p>
+                </div>
+                
+                <div class="ai-tip-card">
+                    <h4><i class="fas fa-bug"></i> Tip 3: Use AI for Debugging</h4>
+                    <p>Paste error messages and ask for explanations. "What does 'Uncaught TypeError: Cannot read properties of null' mean and how do I fix it?"</p>
+                </div>
+                
+                <div class="ai-tip-card">
+                    <h4><i class="fas fa-project-diagram"></i> Tip 4: Get Help with Project Structure</h4>
+                    <p>Ask for advice on organizing your code. "What's a good folder structure for a React project with authentication?" or "How should I structure my CSS for a large website?"</p>
+                </div>
+                
+                <div class="ai-tip-card">
+                    <h4><i class="fas fa-graduation-cap"></i> Tip 5: Learn with AI</h4>
+                    <p>Ask AI to create learning paths. "Create a 30-day learning plan for JavaScript fundamentals" or "What should I learn after HTML and CSS?"</p>
+                </div>
+                
+                <div class="ai-tip-card">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Tip 6: Verify AI Suggestions</h4>
+                    <p>Always test AI-generated code. AI can make mistakes or suggest outdated practices. Use official documentation to verify important information.</p>
+                </div>
+            </div>
+            
+            <!-- Example Prompts -->
+            <div class="example-prompts" style="margin-top: 3rem; background: #f5f7fa; padding: 2rem; border-radius: 12px;">
+                <h3><i class="fas fa-comment-dots"></i> Example AI Prompts for Coding</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: #4a6bff; margin-bottom: 1rem;">HTML/CSS Prompts</h4>
+                        <ul>
+                            <li>"Create a responsive navbar with dropdown menu"</li>
+                            <li>"How to center a div vertically and horizontally?"</li>
+                            <li>"Best practices for semantic HTML"</li>
+                            <li>"CSS Grid vs Flexbox - when to use each?"</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: #4a6bff; margin-bottom: 1rem;">JavaScript Prompts</h4>
+                        <ul>
+                            <li>"Explain closures with simple examples"</li>
+                            <li>"How to handle errors in async/await?"</li>
+                            <li>"Difference between let, const, and var"</li>
+                            <li>"Create a debounce function example"</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: #4a6bff; margin-bottom: 1rem;">Debugging Prompts</h4>
+                        <ul>
+                            <li>"Why is my event listener not working?"</li>
+                            <li>"How to fix CORS errors in fetch API?"</li>
+                            <li>"JavaScript 'this' keyword confusion"</li>
+                            <li>"CSS specificity issues and solutions"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="container ad-container">
+        <div class="ad-box">Ad Space (728x90)</div>
+    </div>
+
+    <!-- AI Limitations & Ethics -->
+    <section class="features" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">AI Limitations & Best Practices</h2>
+            
+            <div class="limitations-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div style="width: 60px; height: 60px; background: #ff9800; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 style="text-align: center;">Limitations</h3>
+                    <ul style="margin-top: 1rem;">
+                        <li>AI can generate incorrect or outdated code</li>
+                        <li>May not understand complex project requirements</li>
+                        <li>Limited context window for long codebases</li>
+                        <li>Can't replace human creativity and judgment</li>
+                        <li>Security vulnerabilities in generated code</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div style="width: 60px; height: 60px; background: #4caf50; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 style="text-align: center;">Best Practices</h3>
+                    <ul style="margin-top: 1rem;">
+                        <li>Use AI as a assistant, not a replacement</li>
+                        <li>Always review and test generated code</li>
+                        <li>Cite AI help in academic/professional work</li>
+                        <li>Combine AI with official documentation</li>
+                        <li>Continue developing fundamental skills</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div style="width: 60px; height: 60px; background: #2196f3; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 style="text-align: center;">Learning Strategy</h3>
+                    <ul style="margin-top: 1rem;">
+                        <li>Use AI to explain concepts you don't understand</li>
+                        <li>Ask for multiple solutions to compare approaches</li>
+                        <li>Request code comments and explanations</li>
+                        <li>Use AI to generate practice problems</li>
+                        <li>Balance AI help with traditional learning</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; padding: 2rem; background: #e8f4fd; border-radius: 12px; text-align: center;">
+                <h3><i class="fas fa-balance-scale"></i> Ethical Use of AI in Coding</h3>
+                <p style="max-width: 800px; margin: 1rem auto;">AI tools should enhance your learning, not replace it. Use them responsibly for education, debugging assistance, and productivity improvement while maintaining academic integrity and continuing to develop your own programming skills.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-code"></i> CodeFixLab
+                    </a>
+                    <p>Educational platform for coding students and beginners.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                        <li><a href="ai-tools.html">AI Tools</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> CodeFixLab. All rights reserved. | Educational Website for Students</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Use AI responsibly as a learning tool, not a replacement for understanding.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // AI Tools specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample question buttons
+            document.getElementById('sampleBtn1').addEventListener('click', function() {
+                document.getElementById('aiQuestion').value = "How do I center a div horizontally and vertically using CSS? Show me different methods with examples.";
+            });
+            
+            document.getElementById('sampleBtn2').addEventListener('click', function() {
+                document.getElementById('aiQuestion').value = "I'm getting this JavaScript error: 'Uncaught TypeError: Cannot read properties of null'. What does it mean and how do I fix it?";
+            });
+            
+            // Ask button functionality
+            document.getElementById('askBtn').addEventListener('click', askAIQuestion);
+            
+            // Clear button functionality
+            document.getElementById('clearQuestionBtn').addEventListener('click', function() {
+                document.getElementById('aiQuestion').value = '';
+                document.getElementById('aiResponseContent').innerHTML = 
+                    `<p style="color: #666; text-align: center; margin-top: 80px;">
+                        <i class="fas fa-robot fa-2x" style="margin-bottom: 15px; display: block; color: #4a6bff;"></i>
+                        Your AI response will appear here.<br>
+                        Try asking about HTML, CSS, JavaScript, or debugging.
+                    </p>`;
+            });
+            
+            // Allow Enter key with Ctrl to submit
+            document.getElementById('aiQuestion').addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    askAIQuestion();
+                }
+            });
+        });
+        
+        function askAIQuestion() {
+            const question = document.getElementById('aiQuestion').value.trim();
+            const aiResponseContent = document.getElementById('aiResponseContent');
+            const aiThinking = document.getElementById('aiThinking');
+            
+            if (!question) {
+                aiResponseContent.innerHTML = `
+                    <div style="background: #ffebee; padding: 15px; border-radius: 8px; color: #c62828;">
+                        <i class="fas fa-exclamation-circle"></i> Please enter a question first.
+                    </div>`;
+                return;
+            }
+            
+            // Show thinking animation
+            aiThinking.style.display = 'flex';
+            aiResponseContent.innerHTML = '';
+            
+            // Hide thinking after delay and show response
+            setTimeout(() => {
+                aiThinking.style.display = 'none';
+                generateAIResponse(question);
+            }, 1500);
+        }
+        
+        function generateAIResponse(question) {
+            const aiResponseContent = document.getElementById('aiResponseContent');
+            const lowerQuestion = question.toLowerCase();
+            
+            // Sample responses based on keywords
+            let response = '';
+            
+            if (lowerQuestion.includes('center') && (lowerQuestion.includes('div') || lowerQuestion.includes('element'))) {
+                response = `
+                    <div style="background: white; padding: 20px; border-radius: 8px;">
+                        <h3 style="margin-top: 0; color: #4a6bff;"><i class="fas fa-align-center"></i> Centering Elements in CSS</h3>
+                        
+                        <h4>Method 1: Flexbox (Modern Approach)</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            .container {<br>
+                            &nbsp;&nbsp;display: flex;<br>
+                            &nbsp;&nbsp;justify-content: center; /* horizontal */<br>
+                            &nbsp;&nbsp;align-items: center; /* vertical */<br>
+                            &nbsp;&nbsp;height: 100vh; /* full viewport height */<br>
+                            }
+                        </div>
+                        
+                        <h4>Method 2: Grid</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            .container {<br>
+                            &nbsp;&nbsp;display: grid;<br>
+                            &nbsp;&nbsp;place-items: center;<br>
+                            &nbsp;&nbsp;height: 100vh;<br>
+                            }
+                        </div>
+                        
+                        <h4>Method 3: Position Transform (Older but reliable)</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            .element {<br>
+                            &nbsp;&nbsp;position: absolute;<br>
+                            &nbsp;&nbsp;top: 50%;<br>
+                            &nbsp;&nbsp;left: 50%;<br>
+                            &nbsp;&nbsp;transform: translate(-50%, -50%);<br>
+                            }
+                        </div>
+                        
+                        <h4>Method 4: Margin Auto (Horizontal only)</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            .element {<br>
+                            &nbsp;&nbsp;width: 200px;<br>
+                            &nbsp;&nbsp;margin: 0 auto; /* horizontal center */<br>
+                            }
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 6px;">
+                            <strong><i class="fas fa-lightbulb"></i> Recommendation:</strong> Use Flexbox for most cases. It's well-supported and flexible for different layouts.
+                        </div>
+                    </div>`;
+            }
+            else if (lowerQuestion.includes('error') || lowerQuestion.includes('null') || lowerQuestion.includes('undefined')) {
+                response = `
+                    <div style="background: white; padding: 20px; border-radius: 8px;">
+                        <h3 style="margin-top: 0; color: #4a6bff;"><i class="fas fa-bug"></i> Debugging "Cannot read properties of null"</h3>
+                        
+                        <h4>What this error means:</h4>
+                        <p>This error occurs when you try to access a property or method on a variable that is <code>null</code> or <code>undefined</code>.</p>
+                        
+                        <h4>Common causes:</h4>
+                        <ul>
+                            <li>DOM element doesn't exist yet when script runs</li>
+                            <li>Incorrect CSS selector or ID</li>
+                            <li>Element removed from DOM after selection</li>
+                            <li>Async code trying to access elements before they're loaded</li>
+                        </ul>
+                        
+                        <h4>Solutions:</h4>
+                        
+                        <h5>1. Check if element exists before using it:</h5>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            const element = document.getElementById('myElement');<br>
+                            if (element) {<br>
+                            &nbsp;&nbsp;// Safe to use element here<br>
+                            &nbsp;&nbsp;element.textContent = 'Hello';<br>
+                            } else {<br>
+                            &nbsp;&nbsp;console.error('Element not found!');<br>
+                            }
+                        </div>
+                        
+                        <h5>2. Ensure DOM is loaded before running scripts:</h5>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            // Put script at end of body OR use:<br>
+                            document.addEventListener('DOMContentLoaded', function() {<br>
+                            &nbsp;&nbsp;// Your code here<br>
+                            &nbsp;&nbsp;const element = document.getElementById('myElement');<br>
+                            &nbsp;&nbsp;if (element) element.textContent = 'Loaded!';<br>
+                            });
+                        </div>
+                        
+                        <h5>3. Optional chaining (modern JavaScript):</h5>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            // Instead of element.value causing error if element is null<br>
+                            const value = element?.value; // Returns undefined if element is null<br>
+                            <br>
+                            // Also works for nested properties<br>
+                            const nested = object?.property?.nestedProperty;
+                        </div>
+                        
+                        <h5>4. Nullish coalescing for default values:</h5>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            const value = element?.value ?? 'default value';
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 6px;">
+                            <strong><i class="fas fa-lightbulb"></i> Debugging Tip:</strong> Use <code>console.log(element)</code> to check if your element selection is working. Check browser console (F12) for exact line number of the error.
+                        </div>
+                    </div>`;
+            }
+            else if (lowerQuestion.includes('flexbox') || lowerQuestion.includes('flex')) {
+                response = `
+                    <div style="background: white; padding: 20px; border-radius: 8px;">
+                        <h3 style="margin-top: 0; color: #4a6bff;"><i class="fas fa-boxes"></i> CSS Flexbox Guide</h3>
+                        
+                        <h4>Basic Flexbox Container:</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            .container {<br>
+                            &nbsp;&nbsp;display: flex;<br>
+                            &nbsp;&nbsp;flex-direction: row; /* row, row-reverse, column, column-reverse */<br>
+                            &nbsp;&nbsp;flex-wrap: nowrap; /* nowrap, wrap, wrap-reverse */<br>
+                            &nbsp;&nbsp;justify-content: flex-start; /* main axis alignment */<br>
+                            &nbsp;&nbsp;align-items: stretch; /* cross axis alignment */<br>
+                            &nbsp;&nbsp;gap: 10px; /* space between items */<br>
+                            }
+                        </div>
+                        
+                        <h4>Common justify-content values:</h4>
+                        <ul>
+                            <li><code>flex-start</code>: Items align to left (default)</li>
+                            <li><code>flex-end</code>: Items align to right</li>
+                            <li><code>center</code>: Items center horizontally</li>
+                            <li><code>space-between</code>: Equal space between items</li>
+                            <li><code>space-around</code>: Equal space around items</li>
+                            <li><code>space-evenly</code>: Equal space between and around</li>
+                        </ul>
+                        
+                        <h4>Common align-items values:</h4>
+                        <ul>
+                            <li><code>stretch</code>: Items stretch to fill container (default)</li>
+                            <li><code>flex-start</code>: Items align to top</li>
+                            <li><code>flex-end</code>: Items align to bottom</li>
+                            <li><code>center</code>: Items center vertically</li>
+                            <li><code>baseline</code>: Items align by text baseline</li>
+                        </ul>
+                        
+                        <h4>Flex Item Properties:</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            .item {<br>
+                            &nbsp;&nbsp;flex-grow: 0; /* Can item grow? */<br>
+                            &nbsp;&nbsp;flex-shrink: 1; /* Can item shrink? */<br>
+                            &nbsp;&nbsp;flex-basis: auto; /* Initial size */<br>
+                            &nbsp;&nbsp;flex: 0 1 auto; /* Shorthand for above */<br>
+                            &nbsp;&nbsp;align-self: auto; /* Override align-items */<br>
+                            &nbsp;&nbsp;order: 0; /* Visual order */<br>
+                            }
+                        </div>
+                        
+                        <h4>Practical Example: Navigation Bar</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            .navbar {<br>
+                            &nbsp;&nbsp;display: flex;<br>
+                            &nbsp;&nbsp;justify-content: space-between;<br>
+                            &nbsp;&nbsp;align-items: center;<br>
+                            &nbsp;&nbsp;padding: 1rem 2rem;<br>
+                            &nbsp;&nbsp;background: #333;<br>
+                            &nbsp;&nbsp;color: white;<br>
+                            }
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 6px;">
+                            <strong><i class="fas fa-gamepad"></i> Interactive Practice:</strong> Try <a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy</a> for interactive Flexbox learning. Also check browser DevTools (F12) for Flexbox debugging tools.
+                        </div>
+                    </div>`;
+            }
+            else if (lowerQuestion.includes('javascript') && (lowerQuestion.includes('function') || lowerQuestion.includes('method'))) {
+                response = `
+                    <div style="background: white; padding: 20px; border-radius: 8px;">
+                        <h3 style="margin-top: 0; color: #4a6bff;"><i class="fab fa-js-square"></i> JavaScript Functions Guide</h3>
+                        
+                        <h4>1. Function Declaration (Hoisted)</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            function sayHello(name) {<br>
+                            &nbsp;&nbsp;return \`Hello, \${name}!\`;<br>
+                            }<br>
+                            <br>
+                            // Can be called before declaration (hoisting)<br>
+                            console.log(sayHello('Alice')); // Works
+                        </div>
+                        
+                        <h4>2. Function Expression</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            const sayHello = function(name) {<br>
+                            &nbsp;&nbsp;return \`Hello, \${name}!\`;<br>
+                            };<br>
+                            <br>
+                            // Must be called after declaration<br>
+                            console.log(sayHello('Bob'));
+                        </div>
+                        
+                        <h4>3. Arrow Function (ES6+)</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            // Single parameter, implicit return<br>
+                            const sayHello = name => \`Hello, \${name}!\`;<br>
+                            <br>
+                            // Multiple parameters<br>
+                            const add = (a, b) => a + b;<br>
+                            <br>
+                            // Multiple lines<br>
+                            const multiply = (a, b) => {<br>
+                            &nbsp;&nbsp;const result = a * b;<br>
+                            &nbsp;&nbsp;return result;<br>
+                            };
+                        </div>
+                        
+                        <h4>4. Immediately Invoked Function Expression (IIFE)</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            (function() {<br>
+                            &nbsp;&nbsp;console.log('This runs immediately!');<br>
+                            })();<br>
+                            <br>
+                            // With parameters<br>
+                            (function(name) {<br>
+                            &nbsp;&nbsp;console.log(\`Hello \${name}\`);<br>
+                            })('Charlie');
+                        </div>
+                        
+                        <h4>5. Higher-Order Functions</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            // Function that returns a function<br>
+                            function createMultiplier(multiplier) {<br>
+                            &nbsp;&nbsp;return function(number) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return number * multiplier;<br>
+                            &nbsp;&nbsp;};<br>
+                            }<br>
+                            <br>
+                            const double = createMultiplier(2);<br>
+                            console.log(double(5)); // 10
+                        </div>
+                        
+                        <h4>6. Default Parameters</h4>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 6px; margin: 10px 0; font-family: monospace;">
+                            function greet(name = 'Guest', greeting = 'Hello') {<br>
+                            &nbsp;&nbsp;return \`\${greeting}, \${name}!\`;<br>
+                            }<br>
+                            <br>
+                            console.log(greet()); // "Hello, Guest!"<br>
+                            console.log(greet('Alice')); // "Hello, Alice!"<br>
+                            console.log(greet('Bob', 'Hi')); // "Hi, Bob!"
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 6px;">
+                            <strong><i class="fas fa-lightbulb"></i> Best Practice:</strong> Use arrow functions for short callbacks and methods. Use function declarations for hoisting needs. Use function expressions when you need to assign functions dynamically.
+                        </div>
+                    </div>`;
+            }
+            else {
+                response = `
+                    <div style="background: white; padding: 20px; border-radius: 8px;">
+                        <h3 style="margin-top: 0; color: #4a6bff;"><i class="fas fa-robot"></i> AI Coding Assistant Response</h3>
+                        
+                        <p>Based on your question: <strong>"${question.substring(0, 100)}${question.length > 100 ? '...' : ''}"</strong></p>
+                        
+                        <h4>General Coding Advice:</h4>
+                        <ul>
+                            <li><strong>Break Down Problems:</strong> Divide complex problems into smaller, manageable parts</li>
+                            <li><strong>Read Errors Carefully:</strong> Error messages often tell you exactly what's wrong</li>
+                            <li><strong>Use Console Debugging:</strong> <code>console.log()</code> is your best friend for debugging</li>
+                            <li><strong>Check Documentation:</strong> MDN Web Docs is an excellent resource for web technologies</li>
+                            <li><strong>Practice Regularly:</strong> Coding is a skill that improves with consistent practice</li>
+                        </ul>
+                        
+                        <h4>For Better AI Assistance:</h4>
+                        <ul>
+                            <li>Include specific error messages</li>
+                            <li>Share relevant code snippets</li>
+                            <li>Specify what you've already tried</li>
+                            <li>Ask for step-by-step explanations</li>
+                            <li>Request code examples with comments</li>
+                        </ul>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 6px;">
+                            <strong><i class="fas fa-external-link-alt"></i> Try These Resources:</strong>
+                            <ul>
+                                <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a> - Official web technology documentation</li>
+                                <li><a href="https://stackoverflow.com" target="_blank">Stack Overflow</a> - Programming Q&A community</li>
+                                <li><a href="code-tester.html">CodeFixLab Code Tester</a> - Test your code instantly</li>
+                                <li><a href="error-fix.html">CodeFixLab Error Fix</a> - Common error solutions</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 6px; font-size: 0.9rem;">
+                            <strong><i class="fas fa-info-circle"></i> Note:</strong> This is a demonstration of AI assistance. For complex or specific questions, consider using actual AI tools like ChatGPT, GitHub Copilot, or consulting official documentation.
+                        </div>
+                    </div>`;
+            }
+            
+            aiResponseContent.innerHTML = response;
+            
+            // Scroll to response
+            document.getElementById('aiResponse').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

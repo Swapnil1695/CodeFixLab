@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact CodeFixLab - Questions & Suggestions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background-color: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #10b981;
+        }
+        
+        nav a.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #10b981;
+            border-radius: 2px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #475569;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 60px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-form, .contact-info {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h2, .contact-info h2 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .contact-form p, .contact-info p {
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #475569;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background-color: white;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #10b981;
+            color: white;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0da271;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f0fdf9;
+            color: #10b981;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            color: #0f172a;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-text p {
+            color: #64748b;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
+        .contact-text a {
+            color: #10b981;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: #0da271;
+            text-decoration: underline;
+        }
+        
+        .faq-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .faq-section h2 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #0f172a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f1f5f9;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .faq-answer.open {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* Advertisement */
+        .ad-box {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #64748b;
+            margin: 40px 0;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #10b981;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                margin-bottom: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-form, .contact-info, .faq-section {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CodeFixLab</h1>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                </div>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="error-fix.html">Error Fix</a></li>
+                    <li><a href="source-code.html">Source Code</a></li>
+                    <li><a href="mini-projects.html">Mini Projects</a></li>
+                    <li><a href="code-tester.html">Code Tester</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container page-content">
+        <div class="contact-container">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Get In Touch</h2>
+                <p>If you have questions, suggestions, or error reports, feel free to contact us using the form below. We typically respond within 24-48 hours.</p>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="error-report">Error Report</option>
+                            <option value="suggestion">Feature Suggestion</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" placeholder="Describe your question, suggestion, or issue in detail..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attachment">Attachment (Optional)</label>
+                        <input type="file" id="attachment" accept=".jpg,.jpeg,.png,.pdf,.txt,.zip">
+                        <small style="color: #64748b; display: block; margin-top: 5px;">You can attach screenshots or code files (max 5MB)</small>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p>You can also reach us through the following channels. We're here to help with any questions about web development, coding errors, or our resources.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>Primary: <a href="mailto:support@codefixlab.com">support@codefixlab.com</a></p>
+                            <p>Error Reports: <a href="mailto:errors@codefixlab.com">errors@codefixlab.com</a></p>
+                            <small style="color: #94a3b8;">We respond within 24-48 hours</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Community Forum</h4>
+                            <p>Join our community forum to ask questions and help other learners.</p>
+                            <p><a href="#">Visit Forum <i class="fas fa-external-link-alt" style="font-size: 12px;"></i></a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Office Address</h4>
+                            <p>CodeFixLab Educational Services</p>
+                            <p>123 Learning Street</p>
+                            <p>Education City, EC 10101</p>
+                            <small style="color: #94a3b8;">Note: We operate primarily online</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Response Time</h4>
+                            <p><strong>Standard Inquiries:</strong> 24-48 hours</p>
+                            <p><strong>Error Reports:</strong> 12-24 hours</p>
+                            <p><strong>Weekend Messages:</strong> Monday morning</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background-color: #f0fdf9; border-radius: 8px;">
+                    <h4 style="color: #065f46; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-lightbulb"></i> Before Contacting Us
+                    </h4>
+                    <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 0;">
+                        For error reports, please include: error message, browser/OS details, code snippet, and steps to reproduce. Check our <a href="error-fix.html" style="color: #10b981;">Error Fix</a> section first - your issue might already be solved!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advertisement -->
+        <div class="ad-box">
+            <p>Advertisement - Premium Support Available</p>
+            <p style="font-size: 14px; margin-top: 10px;">Get priority support with 4-hour response time and personalized code reviews.</p>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long does it take to get a response?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We typically respond within 24-48 hours for standard inquiries. Error reports are prioritized and usually get a response within 12-24 hours. Messages sent on weekends will be answered on Monday morning.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you provide help with specific coding problems?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We help with HTML, CSS, and JavaScript problems. Please provide as much detail as possible: error message, browser/OS information, code snippet, and steps to reproduce the issue. For complex problems, we may suggest checking our Error Fix section or community forum first.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I contribute to CodeFixLab?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We welcome contributions from educators and developers. You can submit tutorials, error fixes, or project ideas. Contact us with your proposal, and we'll discuss how you can contribute to our educational mission.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is CodeFixLab really free?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, our core content is completely free. We believe education should be accessible to everyone. We may offer premium features in the future, but our tutorials, error fixes, and basic source code will always remain free.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I use CodeFixLab content in my classroom?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, educators are welcome to use our content in their classrooms. We ask that you credit CodeFixLab as the source. If you need specific materials or have suggestions for educational use, please contact us - we're happy to support educators.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How accurate is the code on CodeFixLab?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>All code is tested across multiple browsers and devices before publication. We also update our content regularly to reflect best practices and new web standards. However, web development evolves quickly, so if you find outdated code, please report it to us.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeFixLab</h3>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                    <p>A beginner-friendly platform for students to learn web development through practical examples and error solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeFixLab. All rights reserved. Designed for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+        
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // In a real implementation, this would send data to a server
+            // For demo, we'll simulate submission
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Success message
+                alert(`Thank you, ${name}! Your message has been sent successfully. We'll respond to you at ${email} within 24-48 hours.`);
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // In a real implementation, you might redirect or show a confirmation message on the page
+                const confirmationDiv = document.createElement('div');
+                confirmationDiv.innerHTML = `
+                    <div style="background-color: #f0fdf9; color: #065f46; padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid #a7f3d0;">
+                        <h4 style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle"></i> Message Sent Successfully!
+                        </h4>
+                        <p>Thank you for contacting CodeFixLab. We've received your message and will respond within 24-48 hours.</p>
+                        <p><strong>Reference ID:</strong> CF${Date.now().toString().slice(-6)}</p>
+                    </div>
+                `;
+                
+                // Insert after form
+                document.getElementById('contactForm').parentNode.insertBefore(confirmationDiv, document.getElementById('contactForm').nextSibling);
+                
+                // Remove confirmation after 10 seconds
+                setTimeout(() => {
+                    confirmationDiv.remove();
+                }, 10000);
+                
+            }, 1500);
+        });
+        
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+                
+                // Close all other FAQ answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('open');
+                    ans.previousElementSibling.classList.remove('active');
+                });
+                
+                // Toggle current answer if it wasn't already open
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Auto-open first FAQ item
+        document.querySelector('.faq-question').click();
+        
+        // Form field validation on blur
+        document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#dc2626';
+                } else {
+                    this.style.borderColor = '#cbd5e1';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - CodeFixLab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background-color: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #10b981;
+        }
+        
+        nav a.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #10b981;
+            border-radius: 2px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #475569;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 60px 0;
+        }
+        
+        .legal-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .legal-content h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .legal-content h3 {
+            color: #1e293b;
+            margin: 35px 0 20px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .legal-content p {
+            margin-bottom: 20px;
+            color: #475569;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .legal-content ul {
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .legal-content li {
+            margin-bottom: 12px;
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .warning-box {
+            background-color: #fef2f2;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #dc2626;
+        }
+        
+        .warning-box h4 {
+            color: #dc2626;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .educational-note {
+            background-color: #f0fdf9;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border-left: 4px solid #10b981;
+        }
+        
+        .educational-note h4 {
+            color: #065f46;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #10b981;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                margin-bottom: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .legal-content {
+                padding: 30px 20px;
+            }
+            
+            .legal-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .legal-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CodeFixLab</h1>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                </div>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="error-fix.html">Error Fix</a></li>
+                    <li><a href="source-code.html">Source Code</a></li>
+                    <li><a href="mini-projects.html">Mini Projects</a></li>
+                    <li><a href="code-tester.html">Code Tester</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Website Disclaimer</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container page-content">
+        <div class="legal-content">
+            <h2>Disclaimer</h2>
+            
+            <div class="warning-box">
+                <h4><i class="fas fa-exclamation-triangle"></i> Important Notice</h4>
+                <p>All information on this website is for educational purposes only. We are not responsible for misuse of code or information. Please read this entire disclaimer before using CodeFixLab.</p>
+            </div>
+            
+            <h3>1. Educational Purpose Only</h3>
+            <p>The content, code samples, tutorials, and resources provided on CodeFixLab are intended solely for educational purposes. They are designed to help students, beginners, and educators learn web development concepts in a practical, hands-on manner.</p>
+            
+            <p>CodeFixLab is not:</p>
+            <ul>
+                <li>A substitute for formal education or professional training</li>
+                <li>Professional technical support or consulting service</li>
+                <li>A source of production-ready code for commercial applications</li>
+                <li>Responsible for the outcomes of using our resources</li>
+            </ul>
+            
+            <h3>2. No Warranty</h3>
+            <p>The information on this site is provided "as is" without any representations or warranties, express or implied. CodeFixLab makes no representations or warranties in relation to:</p>
+            
+            <ul>
+                <li>The completeness, accuracy, reliability, suitability, or availability of information</li>
+                <li>The functionality, security, or performance of code examples</li>
+                <li>The outcomes of using our tutorials or resources</li>
+                <li>The absence of errors, bugs, or vulnerabilities in code examples</li>
+            </ul>
+            
+            <p>While we strive to provide accurate and functional code examples, web technologies evolve rapidly. Code that works today may not work tomorrow due to browser updates, API changes, or security patches.</p>
+            
+            <h3>3. Limitation of Liability</h3>
+            <p>In no event will CodeFixLab, its owners, contributors, or affiliates be liable for any loss or damage including without limitation:</p>
+            
+            <ul>
+                <li>Indirect or consequential loss or damage</li>
+                <li>Loss of data or profits</li>
+                <li>Business interruption</li>
+                <li>Computer failure or malfunction</li>
+                <li>Any other commercial damages or losses</li>
+            </ul>
+            
+            <p>This limitation of liability applies whether in contract, tort (including negligence), or otherwise, even if CodeFixLab has been advised of the possibility of such damage.</p>
+            
+            <h3>4. Code Usage and Responsibility</h3>
+            <p>Users of CodeFixLab assume full responsibility for:</p>
+            
+            <ul>
+                <li>Testing code thoroughly before implementation</li>
+                <li>Understanding the code they implement</li>
+                <li>Ensuring code complies with applicable laws and regulations</li>
+                <li>Securing any applications built using our resources</li>
+                <li>Backing up data before implementing code changes</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4><i class="fas fa-code"></i> Code Security Warning</h4>
+                <p>Code examples provided on CodeFixLab are for learning purposes and may not include production-level security measures. Do not use our code examples in production environments without proper security review and testing.</p>
+            </div>
+            
+            <h3>5. External Content and Links</h3>
+            <p>Through this website you may find links to other websites which are not under the control of CodeFixLab. We:</p>
+            
+            <ul>
+                <li>Have no control over the nature, content, and availability of external sites</li>
+                <li>Do not endorse or recommend content on external sites</li>
+                <li>Are not responsible for the privacy practices of external sites</li>
+                <li>Cannot guarantee the accuracy or safety of external content</li>
+            </ul>
+            
+            <p>The inclusion of any links does not necessarily imply a recommendation or endorsement of the views expressed within them.</p>
+            
+            <h3>6. Intellectual Property</h3>
+            <p>All content on CodeFixLab is protected by copyright and other intellectual property laws:</p>
+            
+            <ul>
+                <li>Tutorials, articles, and written content are owned by CodeFixLab</li>
+                <li>Code examples are provided under our <a href="terms.html" style="color: #10b981;">Terms of Use</a></li>
+                <li>Third-party trademarks, logos, and brands remain property of their respective owners</li>
+            </ul>
+            
+            <p>You may use code examples for personal and educational purposes as outlined in our Terms of Use, but redistribution or commercial use may require permission.</p>
+            
+            <h3>7. Accuracy of Information</h3>
+            <p>While we strive to keep information accurate and up-to-date:</p>
+            
+            <ul>
+                <li>Web development standards and technologies change frequently</li>
+                <li>Errors or inaccuracies may exist despite our best efforts</li>
+                <li>Code examples may not work in all environments or browser versions</li>
+                <li>Information may become outdated over time</li>
+            </ul>
+            
+            <p>If you find inaccurate information or non-working code, please <a href="contact.html" style="color: #10b981;">report it to us</a> so we can correct it.</p>
+            
+            <h3>8. No Professional Advice</h3>
+            <p>Content on CodeFixLab does not constitute professional advice of any kind:</p>
+            
+            <ul>
+                <li><strong>Not legal advice:</strong> We do not provide legal guidance on software licensing, compliance, or regulations</li>
+                <li><strong>Not security advice:</strong> Our tutorials do not constitute security best practices for production systems</li>
+                <li><strong>Not career advice:</strong> While we aim to help learners, we don't provide personalized career guidance</li>
+                <li><strong>Not financial advice:</strong> We don't provide advice on monetization, business models, or financial decisions</li>
+            </ul>
+            
+            <h3>9. User Responsibility</h3>
+            <p>By using CodeFixLab, you acknowledge and agree that:</p>
+            
+            <ul>
+                <li>You use the website and its resources at your own risk</li>
+                <li>You are responsible for verifying information before relying on it</li>
+                <li>You should consult professionals for important decisions</li>
+                <li>You understand the limitations of educational content</li>
+                <li>You will not hold CodeFixLab liable for outcomes of using our resources</li>
+            </ul>
+            
+            <h3>10. Changes to This Disclaimer</h3>
+            <p>We may update this disclaimer from time to time. We will notify users of significant changes by:</p>
+            
+            <ul>
+                <li>Posting the new disclaimer on this page</li>
+                <li>Updating the "last updated" date if applicable</li>
+                <li>Adding a notice on our website for major changes</li>
+            </ul>
+            
+            <p>Your continued use of CodeFixLab after changes to this disclaimer constitutes acceptance of those changes.</p>
+            
+            <div class="educational-note">
+                <h4><i class="fas fa-graduation-cap"></i> Educational Intent</h4>
+                <p>Despite these disclaimers, our primary goal remains education. We're passionate about helping people learn web development. We provide these resources in good faith and hope they contribute positively to your learning journey. Always approach learning with curiosity, critical thinking, and a commitment to understanding the "why" behind the code, not just the "how".</p>
+            </div>
+            
+            <div style="margin-top: 50px; padding: 20px; background-color: #f8fafc; border-radius: 8px; text-align: center;">
+                <p style="margin-bottom: 10px; color: #64748b;">
+                    <i class="fas fa-balance-scale"></i> By using CodeFixLab, you acknowledge that you have read, understood, and agree to this Disclaimer.
+                </p>
+                <p style="margin-bottom: 0; color: #64748b; font-size: 0.9rem;">
+                    If you do not agree with any part of this disclaimer, please discontinue use of our website.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeFixLab</h3>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                    <p>A beginner-friendly platform for students to learn web development through practical examples and error solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeFixLab. All rights reserved. Designed for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+        
+        // Add last updated date
+        document.addEventListener('DOMContentLoaded', function() {
+            const lastUpdated = document.createElement('p');
+            lastUpdated.innerHTML = `<i class="fas fa-clock"></i> <strong>Disclaimer Last Updated:</strong> October 15, 2023`;
+            lastUpdated.style.cssText = 'text-align: center; color: #64748b; margin-top: 20px; font-size: 0.9rem;';
+            
+            const warningBox = document.querySelector('.warning-box');
+            if (warningBox) {
+                warningBox.parentNode.insertBefore(lastUpdated, warningBox.nextSibling);
+            }
+        });
+    </script>
+</body>
+</html>

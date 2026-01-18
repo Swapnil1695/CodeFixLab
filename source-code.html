@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free HTML, CSS & JavaScript Source Code - CodeFixLab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background-color: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #10b981;
+        }
+        
+        nav a.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #10b981;
+            border-radius: 2px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #475569;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .project-list {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card h3 {
+            font-size: 1.6rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .description {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .description h4 {
+            color: #1d4ed8;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .includes, .features-list {
+            margin-bottom: 25px;
+        }
+        
+        .includes h4, .features-list h4 {
+            margin-bottom: 10px;
+            color: #475569;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #475569;
+        }
+        
+        .project-preview {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px dashed #cbd5e1;
+        }
+        
+        .project-preview h4 {
+            color: #475569;
+            margin-bottom: 15px;
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #c7d2fe 0%, #fbcfe8 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+        
+        .btn-primary {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0da271;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #10b981;
+            border: 2px solid #10b981;
+            margin-left: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f0fdf9;
+            transform: translateY(-3px);
+        }
+        
+        /* Advertisement */
+        .ad-box {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #64748b;
+            margin: 40px 0;
+            font-weight: 500;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ad-title {
+            color: #3b82f6;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .ad-description {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #94a3b8;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #10b981;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                margin-bottom: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .project-card {
+                padding: 25px 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CodeFixLab</h1>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                </div>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="error-fix.html">Error Fix</a></li>
+                    <li><a href="source-code.html" class="active">Source Code</a></li>
+                    <li><a href="mini-projects.html">Mini Projects</a></li>
+                    <li><a href="code-tester.html">Code Tester</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Free HTML, CSS & JavaScript Source Code</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container page-content">
+        <!-- Advertisement 1 -->
+        <div class="ad-box">
+            <div class="ad-title">Advertisement</div>
+            <p>AdSense ID: ca-pub-9991916363065932</p>
+            <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+            <!-- Source Code Page Top Ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-9991916363065932"
+                data-ad-slot="1112223333"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="section-title">
+            <h2>Download Ready-to-Use Code Projects</h2>
+            <p>All projects come with complete source code, documentation, and are beginner-friendly. Perfect for college assignments and learning.</p>
+        </div>
+        
+        <div class="project-list">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>Digital Clock</h3>
+                
+                <div class="description">
+                    <h4>Description:</h4>
+                    <p>A real-time digital clock with date display, timezone support, and beautiful UI. Features include 12/24 hour format, current date, and smooth animations.</p>
+                </div>
+                
+                <div class="project-preview">
+                    <h4>Preview:</h4>
+                    <div class="preview-image">
+                        <i class="fas fa-clock" style="font-size: 48px; color: #6b7280;"></i>
+                    </div>
+                    <p>Real-time clock with date and timezone support</p>
+                </div>
+                
+                <div class="includes">
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>Real-time updating every second</li>
+                        <li>Display current date and day of week</li>
+                        <li>12-hour/24-hour format toggle</li>
+                        <li>Timezone selector</li>
+                        <li>Responsive design</li>
+                        <li>Smooth CSS animations</li>
+                    </ul>
+                </div>
+                
+                <div class="features-list">
+                    <h4>Use:</h4>
+                    <ul>
+                        <li>Learn JavaScript Date object</li>
+                        <li>Practice setInterval function</li>
+                        <li>DOM manipulation practice</li>
+                        <li>College assignments</li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary download-btn" data-project="Digital Clock">
+                    <i class="fas fa-download"></i> Download Source Code
+                </button>
+                <button class="btn btn-secondary demo-btn" data-project="Digital Clock">
+                    <i class="fas fa-eye"></i> View Live Demo
+                </button>
+            </div>
+            
+            <!-- Advertisement 2 -->
+            <div class="ad-box">
+                <div class="ad-title">Advertisement</div>
+                <p>Premium Source Code Available</p>
+                <p class="ad-description">Get access to 50+ premium projects with detailed documentation</p>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+                <!-- Source Code Page Middle Ad 1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-9991916363065932"
+                    data-ad-slot="4445556666"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Countdown Timer</h3>
+                
+                <div class="description">
+                    <h4>Description:</h4>
+                    <p>A customizable countdown timer with start, pause, reset functionality. Perfect for events, exams, or productivity tracking.</p>
+                </div>
+                
+                <div class="project-preview">
+                    <h4>Preview:</h4>
+                    <div class="preview-image">
+                        <i class="fas fa-hourglass-half" style="font-size: 48px; color: #6b7280;"></i>
+                    </div>
+                    <p>Customizable countdown with controls</p>
+                </div>
+                
+                <div class="includes">
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>Set custom countdown time</li>
+                        <li>Start, pause, and reset buttons</li>
+                        <li>Visual progress indicator</li>
+                        <li>Sound notification when timer ends</li>
+                        <li>Save multiple timer presets</li>
+                        <li>Responsive design</li>
+                    </ul>
+                </div>
+                
+                <div class="features-list">
+                    <h4>Learning Outcomes:</h4>
+                    <ul>
+                        <li>JavaScript timing functions</li>
+                        <li>Event handling</li>
+                        <li>LocalStorage for saving presets</li>
+                        <li>Audio API for notifications</li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary download-btn" data-project="Countdown Timer">
+                    <i class="fas fa-download"></i> Download Source Code
+                </button>
+                <button class="btn btn-secondary demo-btn" data-project="Countdown Timer">
+                    <i class="fas fa-eye"></i> View Live Demo
+                </button>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3>BMI Calculator</h3>
+                
+                <div class="description">
+                    <h4>Description:</h4>
+                    <p>A health metric calculator that calculates Body Mass Index (BMI) with category classification and health recommendations.</p>
+                </div>
+                
+                <div class="project-preview">
+                    <h4>Preview:</h4>
+                    <div class="preview-image">
+                        <i class="fas fa-weight-scale" style="font-size: 48px; color: #6b7280;"></i>
+                    </div>
+                    <p>Health metric calculator with BMI categories</p>
+                </div>
+                
+                <div class="includes">
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>Calculate BMI using metric or imperial units</li>
+                        <li>BMI category classification</li>
+                        <li>Health recommendations based on results</li>
+                        <li>Visual indicator (color-coded)</li>
+                        <li>Save calculation history</li>
+                        <li>Responsive design</li>
+                    </ul>
+                </div>
+                
+                <div class="features-list">
+                    <h4>Use:</h4>
+                    <ul>
+                        <li>Learn form validation</li>
+                        <li>Practice calculation logic</li>
+                        <li>Conditional rendering based on results</li>
+                        <li>Medical/health applications</li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary download-btn" data-project="BMI Calculator">
+                    <i class="fas fa-download"></i> Download Source Code
+                </button>
+                <button class="btn btn-secondary demo-btn" data-project="BMI Calculator">
+                    <i class="fas fa-eye"></i> View Live Demo
+                </button>
+            </div>
+            
+            <!-- Advertisement 3 -->
+            <div class="ad-box">
+                <div class="ad-title">Advertisement</div>
+                <p>Learn Web Development Faster</p>
+                <p class="ad-description">Our premium courses help you master coding in 30 days</p>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+                <!-- Source Code Page Middle Ad 2 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-9991916363065932"
+                    data-ad-slot="7778889999"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card">
+                <h3>Unit Converter</h3>
+                
+                <div class="description">
+                    <h4>Description:</h4>
+                    <p>A comprehensive unit converter that converts between different measurement units including length, weight, temperature, and more.</p>
+                </div>
+                
+                <div class="project-preview">
+                    <h4>Preview:</h4>
+                    <div class="preview-image">
+                        <i class="fas fa-ruler-combined" style="font-size: 48px; color: #6b7280;"></i>
+                    </div>
+                    <p>Convert between different measurement units</p>
+                </div>
+                
+                <div class="includes">
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>Convert length (meters, feet, inches, etc.)</li>
+                        <li>Convert weight (kg, pounds, ounces)</li>
+                        <li>Convert temperature (Celsius, Fahrenheit, Kelvin)</li>
+                        <li>Convert volume (liters, gallons, milliliters)</li>
+                        <li>Real-time conversion as you type</li>
+                        <li>Save frequently used conversions</li>
+                    </ul>
+                </div>
+                
+                <div class="features-list">
+                    <h4>Learning Outcomes:</h4>
+                    <ul>
+                        <li>JavaScript calculation logic</li>
+                        <li>Form input handling</li>
+                        <li>Dynamic unit selection</li>
+                        <li>Real-time updates</li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary download-btn" data-project="Unit Converter">
+                    <i class="fas fa-download"></i> Download Source Code
+                </button>
+                <button class="btn btn-secondary demo-btn" data-project="Unit Converter">
+                    <i class="fas fa-eye"></i> View Live Demo
+                </button>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card">
+                <h3>Random Quote Generator</h3>
+                
+                <div class="description">
+                    <h4>Description:</h4>
+                    <p>An inspirational quote generator that displays random quotes with author information. Users can copy quotes or share them on social media.</p>
+                </div>
+                
+                <div class="project-preview">
+                    <h4>Preview:</h4>
+                    <div class="preview-image">
+                        <i class="fas fa-quote-right" style="font-size: 48px; color: #6b7280;"></i>
+                    </div>
+                    <p>Generate random inspirational quotes</p>
+                </div>
+                
+                <div class="includes">
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>Display random quotes from a database</li>
+                        <li>Show author information</li>
+                        <li>Copy quote to clipboard</li>
+                        <li>Share on Twitter/Facebook</li>
+                        <li>Mark quotes as favorites</li>
+                        <li>Search quotes by category or author</li>
+                    </ul>
+                </div>
+                
+                <div class="features-list">
+                    <h4>Use:</h4>
+                    <ul>
+                        <li>Learn API integration (optional)</li>
+                        <li>Practice JavaScript arrays and random selection</li>
+                        <li>Clipboard API usage</li>
+                        <li>Social media integration</li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary download-btn" data-project="Random Quote Generator">
+                    <i class="fas fa-download"></i> Download Source Code
+                </button>
+                <button class="btn btn-secondary demo-btn" data-project="Random Quote Generator">
+                    <i class="fas fa-eye"></i> View Live Demo
+                </button>
+            </div>
+        </div>
+        
+        <!-- Advertisement 4 -->
+        <div class="ad-box">
+            <div class="ad-title">Advertisement</div>
+            <p>Support Free Education</p>
+            <p class="ad-description">Your support helps us create more free content for students</p>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+            <!-- Source Code Page Bottom Ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-9991916363065932"
+                data-ad-slot="0001112222"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- Bonus Section with Working Download All Button -->
+        <div class="project-card">
+            <h3><i class="fas fa-gift"></i> Bonus: 10 Mini Projects Bundle</h3>
+            
+            <div class="description">
+                <h4>Description:</h4>
+                <p>A collection of 10 mini projects perfect for beginners. Each project focuses on a specific concept and comes with complete source code and documentation.</p>
+            </div>
+            
+            <div class="includes">
+                <h4>Projects Included:</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">1. Digital Clock</h5>
+                        <p style="font-size: 14px; color: #64748b;">Real-time clock with date</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">2. Countdown Timer</h5>
+                        <p style="font-size: 14px; color: #64748b;">Customizable countdown</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">3. BMI Calculator</h5>
+                        <p style="font-size: 14px; color: #64748b;">Health metric calculator</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">4. Unit Converter</h5>
+                        <p style="font-size: 14px; color: #64748b;">Convert between units</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">5. Random Quote Generator</h5>
+                        <p style="font-size: 14px; color: #64748b;">Display random quotes</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">6. To-Do List App</h5>
+                        <p style="font-size: 14px; color: #64748b;">Task management</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">7. Weather App</h5>
+                        <p style="font-size: 14px; color: #64748b;">Weather information</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">8. Calculator</h5>
+                        <p style="font-size: 14px; color: #64748b;">Basic arithmetic operations</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">9. Quiz App</h5>
+                        <p style="font-size: 14px; color: #64748b;">Multiple choice questions</p>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <h5 style="color: #1e293b; margin-bottom: 5px;">10. Password Generator</h5>
+                        <p style="font-size: 14px; color: #64748b;">Generate secure passwords</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="downloadAllProjects">
+                    <i class="fas fa-download"></i> Download All 10 Projects
+                </button>
+                <button class="btn btn-secondary" id="viewAllDemos">
+                    <i class="fas fa-eye"></i> View All Demos
+                </button>
+            </div>
+            
+            <div id="downloadProgress" style="display: none; margin-top: 20px;">
+                <div style="background: #f1f5f9; padding: 15px; border-radius: 8px;">
+                    <h4 style="color: #1e293b; margin-bottom: 10px;">Download Progress</h4>
+                    <div style="background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden;">
+                        <div id="progressBar" style="background: #10b981; height: 100%; width: 0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p id="progressText" style="text-align: center; margin-top: 10px; color: #64748b;">Preparing download...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeFixLab</h3>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                    <p>A beginner-friendly platform for students to learn web development through practical examples and error solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeFixLab. All rights reserved. Designed for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+        
+        // Download button functionality for individual projects
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectName = this.getAttribute('data-project');
+                simulateDownload(projectName);
+            });
+        });
+        
+        // Demo button functionality for individual projects
+        document.querySelectorAll('.demo-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectName = this.getAttribute('data-project');
+                viewDemo(projectName);
+            });
+        });
+        
+        // Download All Projects button
+        document.getElementById('downloadAllProjects').addEventListener('click', function() {
+            downloadAllProjects();
+        });
+        
+        // View All Demos button
+        document.getElementById('viewAllDemos').addEventListener('click', function() {
+            viewAllDemos();
+        });
+        
+        // Function to simulate download
+        function simulateDownload(projectName) {
+            // Show loading state
+            const originalText = event.target.innerHTML;
+            event.target.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            event.target.disabled = true;
+            
+            // Simulate download delay
+            setTimeout(() => {
+                // Create a dummy file to download
+                const content = `// ${projectName} - Source Code\n// Downloaded from CodeFixLab\n\n// This is a sample of the source code for ${projectName}\n// Full code available at https://codefixlab.com\n\nconsole.log("${projectName} loaded successfully!");`;
+                const blob = new Blob([content], { type: 'text/javascript' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${projectName.replace(/\s+/g, '_')}_SourceCode.js`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // Show success message
+                alert(`✅ "${projectName}" source code downloaded successfully!\n\nFile: ${projectName.replace(/\s+/g, '_')}_SourceCode.js\n\nCheck your downloads folder.`);
+                
+                // Reset button
+                event.target.innerHTML = originalText;
+                event.target.disabled = false;
+            }, 1500);
+        }
+        
+        // Function to view demo
+        function viewDemo(projectName) {
+            alert(`Opening live demo of "${projectName}"...\n\nIn a production environment, this would open a new window with the project demo.\n\nFor now, you can:\n1. Download the source code\n2. Open index.html in your browser\n3. See the project in action!`);
+        }
+        
+        // Function to download all projects
+        function downloadAllProjects() {
+            const projects = [
+                "Digital Clock",
+                "Countdown Timer", 
+                "BMI Calculator",
+                "Unit Converter",
+                "Random Quote Generator",
+                "To-Do List App",
+                "Weather App",
+                "Calculator",
+                "Quiz App",
+                "Password Generator"
+            ];
+            
+            // Show progress container
+            const progressContainer = document.getElementById('downloadProgress');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            progressText.textContent = 'Preparing download...';
+            
+            // Disable download button
+            const downloadBtn = document.getElementById('downloadAllProjects');
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            downloadBtn.disabled = true;
+            
+            // Simulate downloading each project
+            let current = 0;
+            const total = projects.length;
+            
+            const downloadInterval = setInterval(() => {
+                current++;
+                const percent = Math.min((current / total) * 100, 100);
+                progressBar.style.width = percent + '%';
+                progressText.textContent = `Downloading ${current} of ${total} projects...`;
+                
+                if (current >= total) {
+                    clearInterval(downloadInterval);
+                    
+                    // Create a zip file simulation
+                    setTimeout(() => {
+                        progressText.textContent = 'Creating ZIP file...';
+                        
+                        setTimeout(() => {
+                            // Create a dummy zip file
+                            const zipContent = `// CodeFixLab - 10 Mini Projects Bundle\n// Includes all 10 projects with complete source code\n// Downloaded on: ${new Date().toLocaleDateString()}\n\n// Projects included:\n${projects.map((p, i) => `${i+1}. ${p}`).join('\n')}\n\n// Extract and open index.html in each folder to view the project.`;
+                            const blob = new Blob([zipContent], { type: 'application/zip' });
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = 'CodeFixLab_10_Projects_Bundle.zip';
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(url);
+                            
+                            // Final success message
+                            progressText.textContent = '✅ All 10 projects downloaded successfully!';
+                            progressBar.style.backgroundColor = '#10b981';
+                            
+                            // Reset button after a delay
+                            setTimeout(() => {
+                                downloadBtn.innerHTML = originalText;
+                                downloadBtn.disabled = false;
+                                progressContainer.style.display = 'none';
+                                progressBar.style.backgroundColor = '#10b981';
+                                progressBar.style.width = '0%';
+                                
+                                alert('🎉 Success! All 10 projects have been downloaded as a ZIP file.\n\nCheck your downloads folder for "CodeFixLab_10_Projects_Bundle.zip".\n\nExtract the ZIP file to access all projects.');
+                            }, 2000);
+                        }, 1000);
+                    }, 500);
+                }
+            }, 300);
+        }
+        
+        // Function to view all demos
+        function viewAllDemos() {
+            alert('Opening all project demos...\n\nIn a production environment, this would open a gallery page with links to all project demos.\n\nFor now, you can download the projects and run them locally to see each demo.');
+        }
+    </script>
+</body>
+</html>

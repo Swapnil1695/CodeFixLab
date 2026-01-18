@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About CodeFixLab - Educational Website for Students</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background-color: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #10b981;
+        }
+        
+        nav a.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #10b981;
+            border-radius: 2px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #475569;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 60px 0;
+        }
+        
+        .about-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .about-content h3 {
+            color: #1e293b;
+            margin: 35px 0 20px;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: #475569;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .about-content ul {
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .about-content li {
+            margin-bottom: 12px;
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .mission-statement {
+            background-color: #f0fdf9;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #10b981;
+            margin: 30px 0;
+        }
+        
+        .mission-statement h4 {
+            color: #065f46;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .value-card {
+            background-color: #f8fafc;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid #10b981;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #dcfce7;
+            color: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+        
+        .value-card h4 {
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .value-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        .team-section {
+            margin-top: 60px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #c7d2fe 0%, #fbcfe8 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #6b7280;
+        }
+        
+        .team-member h4 {
+            color: #0f172a;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .team-member .role {
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .team-member p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        /* Advertisement */
+        .ad-box {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #64748b;
+            margin: 40px 0;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #10b981;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                margin-bottom: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                padding: 30px 20px;
+            }
+            
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-content h3 {
+                font-size: 1.4rem;
+            }
+            
+            .values-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .mission-statement {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CodeFixLab</h1>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                </div>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="error-fix.html">Error Fix</a></li>
+                    <li><a href="source-code.html">Source Code</a></li>
+                    <li><a href="mini-projects.html">Mini Projects</a></li>
+                    <li><a href="code-tester.html">Code Tester</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>About CodeFixLab</h1>
+        </div>
+    </div>
+
+    <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+    <!-- Main Content -->
+    <div class="container page-content">
+        <div class="about-content">
+            <h2>Our Mission: Making Coding Accessible to Everyone</h2>
+            
+            <div class="mission-statement">
+                <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
+                <p>CodeFixLab is an educational website created to help students learn web development easily. Our goal is to provide clean tutorials, free source code, and practical mini projects that bridge the gap between theoretical knowledge and real-world application.</p>
+            </div>
+            
+            <p>Founded in 2023, CodeFixLab emerged from a simple observation: many students struggle with applying programming concepts to actual projects. They understand the theory but get stuck when implementing code, debugging errors, or building complete applications.</p>
+            
+            <p>We believe that learning web development should be accessible, practical, and enjoyable. Our platform is specifically designed for students, beginners, and educators who want to build real-world skills through hands-on practice.</p>
+            
+            <h3>What We Offer</h3>
+            <p>CodeFixLab provides a comprehensive learning ecosystem for web development:</p>
+            
+            <ul>
+                <li><strong>Error Fix Tutorials:</strong> Step-by-step solutions to common HTML, CSS, and JavaScript problems with clear explanations and working examples.</li>
+                <li><strong>Free Source Code:</strong> Download clean, well-commented code for various projects from simple forms to complete applications.</li>
+                <li><strong>Mini Projects:</strong> Practice real projects useful for college assignments, viva preparation, and portfolio building.</li>
+                <li><strong>Code Tester:</strong> An interactive tool to write and test HTML, CSS, and JavaScript code instantly without any setup.</li>
+                <li><strong>Learning Resources:</strong> Comprehensive guides, cheat sheets, and reference materials for quick learning.</li>
+            </ul>
+            
+            <h3>Our Approach to Learning</h3>
+            <p>We've developed a unique approach that makes learning web development more effective:</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h4>Error-First Learning</h4>
+                    <p>We believe understanding common mistakes is the fastest way to learn. Our error-fix tutorials show not just the right way, but explain why the wrong way doesn't work.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>Beginner-Focused</h4>
+                    <p>All our content is designed with beginners in mind. We avoid jargon, explain concepts clearly, and provide working examples that students can actually understand and use.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4>Project-Based</h4>
+                    <p>We emphasize learning by doing. Each tutorial includes practical examples, and our mini projects help students apply concepts to build real, working applications.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Education First</h4>
+                    <p>Our primary goal is education, not profit. We provide most of our content for free and focus on creating value for students and educators worldwide.</p>
+                </div>
+            </div>
+            
+            <h3>Who We Serve</h3>
+            <p>CodeFixLab is specifically designed for:</p>
+            
+            <ul>
+                <li><strong>Students</strong> - Learning web development in school, college, or university courses</li>
+                <li><strong>Beginners</strong> - Taking their first steps in coding and web development</li>
+                <li><strong>Hobbyists</strong> - Looking to build small projects for fun or personal use</li>
+                <li><strong>Educators</strong> - Seeking resources for teaching web development concepts</li>
+                <li><strong>Career Changers</strong> - Transitioning into tech and building foundational skills</li>
+            </ul>
+            
+            <h3>Our Philosophy</h3>
+            <p>At CodeFixLab, we operate on several core principles:</p>
+            
+            <ul>
+                <li><strong>Clarity Over Complexity:</strong> We break down complex topics into simple, digestible pieces.</li>
+                <li><strong>Practical Over Theoretical:</strong> While theory is important, we focus on practical application.</li>
+                <li><strong>Quality Over Quantity:</strong> We prioritize creating well-explained, tested content rather than overwhelming volume.</li>
+                <li><strong>Community Driven:</strong> We continuously improve based on user feedback and suggestions.</li>
+                <li><strong>Always Free Core Content:</strong> Our essential learning resources will always remain free to access.</li>
+            </ul>
+            
+            <h3>What Makes Us Different</h3>
+            <p>While there are many coding resources available, CodeFixLab stands out because:</p>
+            
+            <ul>
+                <li>We focus specifically on the pain points students face when learning web development</li>
+                <li>Our content is tested and verified to work in real scenarios</li>
+                <li>We provide complete, ready-to-use code rather than just snippets</li>
+                <li>Our explanations are written in simple, beginner-friendly language</li>
+                <li>We include common errors and their solutions, not just the correct code</li>
+                <li>All projects are designed to be practical and relevant to real-world needs</li>
+            </ul>
+            
+            <div class="team-section">
+                <h3>Our Team</h3>
+                <p>CodeFixLab is created and maintained by educators and developers who are passionate about making coding education more accessible and effective.</p>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Alex Johnson</h4>
+                        <p class="role">Founder & Lead Educator</p>
+                        <p>Former computer science instructor with 8+ years of teaching experience. Passionate about simplifying complex coding concepts.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4>Maria Chen</h4>
+                        <p class="role">Content Developer</p>
+                        <p>Full-stack developer specializing in creating beginner-friendly tutorials and project-based learning materials.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <h4>David Park</h4>
+                        <p class="role">Technical Lead</p>
+                        <p>Focuses on building interactive tools like the Code Tester and ensuring all code examples are optimized and error-free.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Our Impact</h3>
+            <p>Since our launch, CodeFixLab has helped thousands of students:</p>
+            
+            <ul>
+                <li>Complete college assignments and projects successfully</li>
+                <li>Prepare for viva exams and technical interviews</li>
+                <li>Build portfolios to showcase their skills</li>
+                <li>Transition from theoretical knowledge to practical application</li>
+                <li>Gain confidence in their coding abilities</li>
+                <li>Debug and fix common coding errors independently</li>
+            </ul>
+            
+            <h3>Join Our Community</h3>
+            <p>We're more than just a website - we're a community of learners helping each other grow. Whether you're just starting out or looking to strengthen your skills, CodeFixLab is here to support your coding journey.</p>
+            
+            <p>All our code examples are tested and optimized for learning. We avoid advanced concepts that might confuse beginners, focusing instead on building a strong foundation that will serve you throughout your programming career.</p>
+            
+            <p style="margin-top: 30px; padding: 20px; background-color: #f0fdf9; border-radius: 8px; text-align: center;">
+                <strong>Ready to start your coding journey?</strong><br>
+                Explore our <a href="error-fix.html" style="color: #10b981; font-weight: 600;">Error Fix tutorials</a>, download <a href="source-code.html" style="color: #10b981; font-weight: 600;">free source code</a>, or try our <a href="code-tester.html" style="color: #10b981; font-weight: 600;">interactive Code Tester</a>.
+            </p>
+        </div>
+        
+        <!-- Advertisement -->
+<div class="ad-box">
+    <div class="ad-title">Advertisement</div>
+    <p>AdSense ID: ca-pub-9991916363065932</p>
+    <p class="ad-description">This space is reserved for Google AdSense advertisements</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991916363065932" crossorigin="anonymous"></script>
+    <!-- Your Ad Unit Code Here -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9991916363065932"
+        data-ad-slot="UNIQUE_SLOT_ID"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeFixLab</h3>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                    <p>A beginner-friendly platform for students to learn web development through practical examples and error solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeFixLab. All rights reserved. Designed for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

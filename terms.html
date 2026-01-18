@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - CodeFixLab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background-color: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #10b981;
+        }
+        
+        nav a.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #10b981;
+            border-radius: 2px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #475569;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 60px 0;
+        }
+        
+        .legal-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .legal-content h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .legal-content h3 {
+            color: #1e293b;
+            margin: 35px 0 20px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .legal-content p {
+            margin-bottom: 20px;
+            color: #475569;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .legal-content ul {
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .legal-content li {
+            margin-bottom: 12px;
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .acceptance-box {
+            background-color: #f0fdf9;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #10b981;
+            text-align: center;
+        }
+        
+        .acceptance-box p {
+            margin-bottom: 0;
+            color: #065f46;
+            font-weight: 500;
+        }
+        
+        .license-details {
+            background-color: #f8fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .license-details h4 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #10b981;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                margin-bottom: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .legal-content {
+                padding: 30px 20px;
+            }
+            
+            .legal-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .legal-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CodeFixLab</h1>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                </div>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="error-fix.html">Error Fix</a></li>
+                    <li><a href="source-code.html">Source Code</a></li>
+                    <li><a href="mini-projects.html">Mini Projects</a></li>
+                    <li><a href="code-tester.html">Code Tester</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Terms of Use</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container page-content">
+        <div class="legal-content">
+            <h2>Terms and Conditions</h2>
+            
+            <div class="acceptance-box">
+                <p><i class="fas fa-exclamation-circle"></i> By using this website, you agree to follow our terms. Content is provided for learning and personal use only.</p>
+            </div>
+            
+            <h3>1. Acceptance of Terms</h3>
+            <p>By accessing and using CodeFixLab ("the Website"), you accept and agree to be bound by these Terms and Conditions. If you do not agree to abide by these terms, please do not use this website.</p>
+            
+            <p>These terms constitute a legally binding agreement between you and CodeFixLab regarding your use of the Website. We reserve the right to modify these terms at any time, and such modifications will be effective immediately upon posting.</p>
+            
+            <h3>2. Use License</h3>
+            <p>Permission is granted to temporarily access the materials (information, tutorials, code examples, and software) on CodeFixLab for personal, non-commercial, educational use only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+            
+            <ul>
+                <li>Modify or copy the materials for commercial purposes</li>
+                <li>Use the materials for any commercial purpose or public display</li>
+                <li>Attempt to decompile or reverse engineer any software contained on CodeFixLab</li>
+                <li>Remove any copyright or other proprietary notations from the materials</li>
+                <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+                <li>Use the materials in any way that is damaging to CodeFixLab or its users</li>
+            </ul>
+            
+            <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by CodeFixLab at any time.</p>
+            
+            <div class="license-details">
+                <h4><i class="fas fa-file-code"></i> Code Usage License</h4>
+                <p>Code examples provided on CodeFixLab are licensed under the following terms:</p>
+                <ul>
+                    <li>You may use, modify, and distribute code for personal and educational purposes</li>
+                    <li>You may use code in your own projects, including school and university assignments</li>
+                    <li>Attribution to CodeFixLab is appreciated but not required for personal/educational use</li>
+                    <li>Commercial use may require separate permission</li>
+                    <li>You may not resell or redistribute code as your own product</li>
+                </ul>
+            </div>
+            
+            <h3>3. Content Usage and Restrictions</h3>
+            <p>All content provided on CodeFixLab is for educational and personal use only:</p>
+            
+            <h4>3.1 Permitted Uses</h4>
+            <ul>
+                <li>Learning web development concepts</li>
+                <li>Completing school or university assignments</li>
+                <li>Building personal projects for portfolio</li>
+                <li>Teaching web development (with proper attribution)</li>
+                <li>Referencing in your own code with understanding</li>
+            </ul>
+            
+            <h4>3.2 Prohibited Uses</h4>
+            <ul>
+                <li>Plagiarism (submitting our code as your own without significant modification)</li>
+                <li>Commercial redistribution of our content</li>
+                <li>Creating derivative works for commercial sale without permission</li>
+                <li>Using content in ways that violate applicable laws</li>
+                <li>Automated scraping or downloading of large portions of our content</li>
+            </ul>
+            
+            <h3>4. User Conduct</h3>
+            <p>When using our website, you agree not to:</p>
+            
+            <ul>
+                <li>Use the site in any way that causes damage to the website or impairment of availability</li>
+                <li>Engage in any data mining, data harvesting, or similar activities in relation to this website</li>
+                <li>Use the site for any unlawful purposes or in connection with illegal activities</li>
+                <li>Harass, abuse, or harm another person</li>
+                <li>Submit false or misleading information</li>
+                <li>Upload or transmit viruses or any other type of malicious code</li>
+                <li>Attempt to gain unauthorized access to our systems or user accounts</li>
+            </ul>
+            
+            <h3>5. Intellectual Property</h3>
+            <p>The content on CodeFixLab is protected by intellectual property laws:</p>
+            
+            <h4>5.1 Our Content</h4>
+            <ul>
+                <li>All tutorials, articles, and written content are copyright © CodeFixLab</li>
+                <li>Website design, layout, and graphics are proprietary</li>
+                <li>The CodeFixLab name and logo are trademarks</li>
+            </ul>
+            
+            <h4>5.2 Third-Party Content</h4>
+            <p>Some content may include third-party materials used under license or fair use. All third-party trademarks, logos, and brand names remain the property of their respective owners.</p>
+            
+            <h4>5.3 User Contributions</h4>
+            <p>If you submit content to CodeFixLab (comments, code contributions, etc.), you grant us a non-exclusive, royalty-free license to use, modify, and display that content on our website.</p>
+            
+            <h3>6. Disclaimer of Warranties</h3>
+            <p>The materials on CodeFixLab are provided on an 'as is' basis. CodeFixLab makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation:</p>
+            
+            <ul>
+                <li>Implied warranties of merchantability</li>
+                <li>Fitness for a particular purpose</li>
+                <li>Non-infringement of intellectual property</li>
+                <li>Accuracy, reliability, or completeness of materials</li>
+            </ul>
+            
+            <p>Further, CodeFixLab does not warrant or make any representations concerning:</p>
+            <ul>
+                <li>The accuracy, likely results, or reliability of using the materials</li>
+                <li>The security, functionality, or performance of code examples</li>
+                <li>The timeliness or continued availability of content</li>
+            </ul>
+            
+            <h3>7. Limitations of Liability</h3>
+            <p>In no event shall CodeFixLab or its suppliers be liable for any damages (including, without limitation):</p>
+            
+            <ul>
+                <li>Damages for loss of data or profit</li>
+                <li>Business interruption</li>
+                <li>Damages arising from the use or inability to use the materials</li>
+                <li>Any other commercial damages or losses</li>
+            </ul>
+            
+            <p>Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
+            
+            <h3>8. Accuracy of Materials</h3>
+            <p>The materials appearing on CodeFixLab could include technical, typographical, or photographic errors. We do not warrant that any of the materials are accurate, complete, or current. We may make changes to the materials at any time without notice, but we do not make any commitment to update the materials.</p>
+            
+            <h3>9. Links to Other Websites</h3>
+            <p>CodeFixLab has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by CodeFixLab. Use of any such linked website is at the user's own risk.</p>
+            
+            <h3>10. Modifications to Terms</h3>
+            <p>CodeFixLab may revise these terms of service at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+            
+            <p>We will provide notice of significant changes by:</p>
+            <ul>
+                <li>Posting the new terms on this page</li>
+                <li>Sending notification to registered users (if applicable)</li>
+                <li>Adding a notice on our website for major changes</li>
+            </ul>
+            
+            <h3>11. Termination</h3>
+            <p>We may terminate or suspend access to our website immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+            
+            <p>Upon termination, your right to use the Website will immediately cease. All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</p>
+            
+            <h3>12. Governing Law</h3>
+            <p>These terms and conditions are governed by and construed in accordance with the laws of the jurisdiction where CodeFixLab is primarily operated, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+            
+            <h3>13. Severability</h3>
+            <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
+            
+            <h3>14. Entire Agreement</h3>
+            <p>These Terms constitute the entire agreement between you and CodeFixLab regarding our Website and supersede all prior and contemporaneous written or oral agreements.</p>
+            
+            <h3>15. Contact Information</h3>
+            <p>If you have any questions about these Terms, please contact us:</p>
+            
+            <div class="license-details">
+                <h4><i class="fas fa-envelope"></i> Contact for Terms Questions</h4>
+                <p>Email: <a href="mailto:terms@codefixlab.com" style="color: #10b981;">terms@codefixlab.com</a></p>
+                <p>For general inquiries: <a href="mailto:support@codefixlab.com" style="color: #10b981;">support@codefixlab.com</a></p>
+                <p>Postal Address: CodeFixLab Legal Department, 123 Learning Street, Education City, EC 10101</p>
+            </div>
+            
+            <div style="margin-top: 50px; padding: 25px; background-color: #f8fafc; border-radius: 8px; text-align: center;">
+                <h4 style="color: #1e293b; margin-bottom: 15px;">Summary for Students and Educators</h4>
+                <p style="color: #64748b; margin-bottom: 15px;">
+                    <i class="fas fa-user-graduate"></i> In simple terms: You can use our code for learning, school projects, and personal use. Please don't copy our tutorials or code and sell them as your own. Always test code before using it in important projects.
+                </p>
+                <p style="color: #64748b; margin-bottom: 0; font-size: 0.9rem;">
+                    These terms exist to protect both you and us, but our primary goal is to help you learn web development effectively and safely.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeFixLab</h3>
+                    <p>Fix Errors • Learn Code • Build Projects</p>
+                    <p>A beginner-friendly platform for students to learn web development through practical examples and error solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="error-fix.html">Error Fix</a></li>
+                        <li><a href="source-code.html">Source Code</a></li>
+                        <li><a href="mini-projects.html">Mini Projects</a></li>
+                        <li><a href="code-tester.html">Code Tester</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeFixLab. All rights reserved. Designed for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+        
+        // Add effective date
+        document.addEventListener('DOMContentLoaded', function() {
+            const effectiveDate = document.createElement('p');
+            effectiveDate.innerHTML = `<i class="fas fa-calendar-check"></i> <strong>Terms Effective Date:</strong> January 1, 2023 | <strong>Last Updated:</strong> October 15, 2023`;
+            effectiveDate.style.cssText = 'text-align: center; color: #64748b; margin-top: 20px; font-size: 0.9rem;';
+            
+            const acceptanceBox = document.querySelector('.acceptance-box');
+            if (acceptanceBox) {
+                acceptanceBox.parentNode.insertBefore(effectiveDate, acceptanceBox.nextSibling);
+            }
+        });
+    </script>
+</body>
+</html>
